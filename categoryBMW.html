@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <title>XE HƠI</title> 
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
+        <script src="js/index.js" defer></script>
+        <script src="js/cart.js" defer></script>
+    </head>
+    <body>
+        <!------------------------HEADER---------------------->
+        <header id="myHeader">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.jpg" alt=""></a>
+            </div>
+
+            <div class="menu">
+                <li><a href="index.html"><b>TRANG CHỦ</b></a></li>
+                <li onclick="chuaCapNhat()"><b>VỀ CHÚNG TÔI</b></li>
+                <li><a href="category.html"><b>MẪU XE</b></a></li>
+            </div>
+
+            <div id="others" class="others">
+                <li><input id="search" placeholder="TÌM KIẾM" type="text" oninput="search()" > <i id="searchBtn" class="fas fa-search"></i></li>
+                <div>
+                    <li id="customerName1" onclick="renderLoginForm()"><img src="img/user.png" alt="" ></li>
+                    <li id="customerName2" style="display: none; font-weight: bold;">
+                        <p id="hello"></p>
+                        <ul class="dropDownCustomerName2">
+                            <a >Cài đặt</a>
+                            <a id="logout">Đăng xuất</a>
+                        </ul>
+                    </li>
+                </div>
+                <div class="icon-cart">
+                    <li><img src="img/shopping-cart.png" alt="" id="cart-icon"></li>
+                    <span>0</span>
+                </div>
+            </div>
+        </header>
+        <!------------------------CART---------------------->
+        <div id="showCart" class="showCart" style="display: none;">
+            <div id="cart-tab" class="cartTab" >
+                <h1>GIỎ HÀNG</h1>
+                <div class="listCart">
+                    <div class="item">
+
+                    </div>
+                </div>
+                <div class="btn">
+                    <button id="closeCart" class="close">ĐÓNG</button>
+
+                    <button class="checkOut">ĐẶT HÀNG</button>
+                </div>
+            </div>
+        </div>
+        <!------------------------LOGIN-FORM---------------------->
+        <div id = "login-form" style="display: none;">
+            <div class="container">
+                <input type="checkbox" id="check">
+                <div id="loginForm" class="login form">
+                  <div class="header">Login</div>
+                  <form action="#">
+                    <input id="loginUsername" type="text" placeholder="Enter your username">
+                    <input id="loginPassword" type="password" placeholder="Enter your password">
+                    <input type="button" class="button" value="Login" onclick="getLoginValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Don't have an account?
+                     <label for="check">Signup</label>
+                    </span>
+                  </div>
+                </div>
+                <div id="signUpForm" class="registration form">
+                  <div class="header">Signup</div>
+                  <form action="#">
+                    <input id="signUpUsername" type="text" placeholder="Nhập username" required>
+                    <input id="signUpEmail" type="text" placeholder="Nhập email" required>
+                    <input id="signUpPassword1" type="password" placeholder="Tạo mật khẩu" required>
+                    <input id="signUpPassword2" type="password" placeholder="Xác nhận mật khẩu" required>
+                    <input id="address" type="address" placeholder="Nhập đỉa chỉ" required>
+                    <input type="button" class="button" value="Signup" onclick="getSignUpValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Already have an account?
+                     <label for="check">Login</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div id="productDetail" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Tên sản phẩm</h2>
+                        <p id="productType" class="productType">Loại xe: </p>
+                        <p id="productBrand" class="productBrand">Hãng xe: </p>
+                        <h4 id="productPrice" class="productPrice">Giá: </h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design"></p>
+                        <div class="img-box">
+                            <img id="imgFront" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design"></p>
+                        <div class="img-box">
+                            <img id="imgBody" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design"></p>
+                        <div class="img-box">
+                            <img id="imgTail" src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail7" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--7-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo7()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg BMW i7 xDrive60.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">BMW i7 xDrive60</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Điện</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: BMW</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 9,200,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Ở phần đầu, dù là xe thuần điện nhưng mẫu xe này vẫn có lưới tản nhiệt hình quả thận đặc trưng của BMW, dĩ nhiên nó sẽ chỉ là chi tiết trang trí. Phía trên là logo và nắp ca-pô sở hữu những đường gân nổi đầy cá tính.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg BMW i7 xDrive60.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Nhìn ngang phần thân, BMW i7 2024 có thiết kế theo phong cách bầu bĩnh, bộ mâm được thay mới cầu kỳ hơn dạng 5 chấu kép hình chữ V. Điểm nhấn của mẫu xe này đến từ thay nắm cửa ẩn vào thân xe giúp gia tăng tính khí động học. Người dùng sẽ mở cửa bằng cách chạm vào nút bấm ở khu vực tay nắm cửa, đây là chi tiết mới thú vị trên BMW 7-Series đời mới.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg BMW i7 xDrive60.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Ra đến phần đuôi, thay vì đèn nối liền như cũ, BMW i7 đời mới có cặp đèn hậu thanh mảnh hơn và tách biệt 2 bên. Khu vực cản sau của xe chứa nơi gắn biển số, kéo dài sang 2 bên là đèn phản quang cùng chi tiết hốc gió giả mới lạ.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg BMW i7 xDrive60.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail8" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--8-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo8()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg BMW Z4 Roadster.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">BMW Z4 Roadster</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Convertible</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: BMW</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 3,500,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Phần đầu xe, BMW Z4 2023 “chơi trội” với cụm lưới tản nhiệt hình quả thận nằm ngang đi cùng với những chi tiết làm từ chất liệu nhôm tráng men. Nổi bật hai bên là cặp mắt sắc sử dụng đèn LED thích ứng đem đến khả năng chiếu sáng linh hoạt. Các đường gân dập nổi trên nắp capo càng làm cho tổng thể chiếc xe thêm phần “nam tính”. Nằm gọn gàng phía dưới chân BMW Z4 là hốc hút gió họa tiết tổ ong sát mặt lưới tản nhiệt. Cản trước xe vuốt nhọn sắc xảo.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg BMW Z4 Roadster.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Chân xe BMW Z4 2023 thêm phần mạnh mẽ từ những đường gân nổi chạy từ đầu đến phần đuôi. Điểm nhấn tại phần hông có lẽ là khe thoát khí nằm lõm lòng phía trong giúp tăng tính khí động học khi xe tăng tốc. Cửa xe thiết kế mở chéo mới lạ. Gương và tay nắm cửa của sDrive30i M Sport cùng màu thân xe. Gương có chức năng chỉnh/gập điện và chống chói tự động.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg BMW Z4 Roadster.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Vòng về đuôi xe, BMW Z4 2023 gây ấn tượng khi có phần phía sau ngắn. Đây được xem là một nét đặc trưng của những dòng xe Roadster. Nhiều đánh giá cho rằng nhờ những mảng khối riêng biệt giúp cho phiên bản BMW Z4 thế hệ mới trông bắt mắt và hầm hố hơn.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg BMW Z4 Roadster.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="category">
+            <!------------------------CATEGORY---------------------->
+            <section class="category">
+               <div class="container">
+                   <div class="row">
+                       <div class="category-left">
+                           <ul>
+                               <li class="category-left-li"><a href="category.html">Tất cả</a></li>
+                               <li class="category-left-li"><a href="categoryAudi.html">Audi</a></li>
+                               <li class="category-left-li"><a href="categoryBentley.html">Bentley</a></li>
+                               <li class="category-left-li"><a href="categoryBMW.html">BMW</a></li>
+                               <li class="category-left-li"><a href="categoryFord.html">Ford</a></li>
+                               <li class="category-left-li"><a href="categoryMazda.html">Mazda</a></li>
+                               <li class="category-left-li"><a href="categoryMercedes.html">Mercedes-Benz</a></li>
+                           </ul>
+                       </div>
+                       <div class="category-right">
+                           <div class="category-right-top-item">
+                               <p id="type">BMW</p>
+                               <button><span>Bộ lọc</span><i class="fas fa-sort-down"></i></button>
+                               <select name="" id="">
+                                   <option value="">Sắp xếp</option>
+                                   <option value="">Giá cao đến thấp</option>
+                                   <option value="">Giá thấp đến cao</option>
+                               </select>
+                           </div>
+                           <div id="cars-content" class="category-right-content row">
+                                <!--Sản phẩm hiển thị ở đây-->
+                                <!--sp7-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg BMW i7 xDrive60.jpg" alt="">
+                                    <h1>BMW i7 xDrive60</h1>
+                                    <p class="product-price">9,200,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo7()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp8-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg BMW Z4 Roadster.jpg" alt="">
+                                    <h1>BMW Z4 Roadster</h1>
+                                    <p class="product-price">3,500,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo8()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                </div>
+                           </div>
+                           <div class="category-right-bottom row">
+                               <div id="pagination" class="category-right-bottom-item">
+                                    <ul class="number-page" id="number-page">
+                                        <li><</li>
+                                        <li>1</li>
+                                        <li>></li>
+                                    </ul>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </section>        
+        </div>
+        <!------------------------FOOTER---------------------->
+        <div id="footer" class="footer">
+            <div class="footer-container container">
+                <div class="footer-box">
+                    <a href="index.html" class="logo"><img src="img/logo.jpg" alt=""></a>
+                    <div class="social">
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-facebook"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-twitter"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-instagram"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Page</b></h3>
+                    <a href="index.html">Trang chủ</a>
+                    <a href="#" onclick="chuaCapNhat()">Về chúng tôi</a>
+                    <a href="#" onclick="renderCategory()">Mẫu xe</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Chính sách</b></h3>
+                    <a href="#" onclick="chuaCapNhat()">Quyền riêng tư</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách hoàn trả</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách về Cookie</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Liên hệ</b></h3>
+                    <a href="#"><i class='bx bxs-home'><b>Địa chỉ đăng ký</b>: 123 đường A, Phường. B, Quận. C, Thành phố XYZ, Việt Nam</i></a>
+                    <a href="#"><i class='bx bxs-phone'><b>SĐT</b>: 0832963381 </i></a>
+                    <a href="#"><i class='bx bxs-envelope'><b>Email</b>: serviceN&K@gmail.com</i></a>
+                </div>
+            </div>
+            <div class="copy-right">
+                <p style="color: black;"> <b>© 2023 Công ty Ô tô N & K. Bản quyền thuộc về chúng tôi.</b></p>
+            </div>
+        </div>
+    </body>
+</html>

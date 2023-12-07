@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,500&family=Noto+Sans:wght@500&display=swap');
+#cart-overlay{
+    display:flex;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 10;
+}
+
+#cart-overlay #cart-table{
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+    overflow: scroll;
+    height: 600px;
+    width: 1000px;
+    background-color: #fff;
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 20px 20px;
+    position: relative;
+    animation: topdown 0.5s;
+    z-index: 20;
+    border-radius: 20px;
+    gap:50px;
+}

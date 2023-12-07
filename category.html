@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <title>XE HƠI</title> 
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
+        <script src="js/index.js" defer></script>
+        <script src="js/cart.js" defer></script>
+    </head>
+    <body>
+        <!------------------------HEADER---------------------->
+        <header id="myHeader">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.jpg" alt=""></a>
+            </div>
+
+            <div class="menu">
+                <li><a href="index.html"><b>TRANG CHỦ</b></a></li>
+                <li onclick="chuaCapNhat()"><b>VỀ CHÚNG TÔI</b></li>
+                <li><a href="category.html"><b>MẪU XE</b></a></li>
+            </div>
+
+            <div id="others" class="others">
+                <li><input id="search" placeholder="TÌM KIẾM" type="text" oninput="search()" > <i id="searchBtn" class="fas fa-search"></i></li>
+                <div>
+                    <li id="customerName1" onclick="renderLoginForm()"><img src="img/user.png" alt="" ></li>
+                    <li id="customerName2" style="display: none; font-weight: bold;">
+                        <p id="hello"></p>
+                        <ul class="dropDownCustomerName2">
+                            <a >Cài đặt</a>
+                            <a id="logout">Đăng xuất</a>
+                        </ul>
+                    </li>
+                </div>
+                <div class="icon-cart">
+                    <li><img src="img/shopping-cart.png" alt="" id="cart-icon"></li>
+                    <span>0</span>
+                </div>
+            </div>
+        </header>
+        <!------------------------CART---------------------->
+        <div id="showCart" class="showCart" style="display: none;">
+            <div id="cart-tab" class="cartTab" >
+                <h1>GIỎ HÀNG</h1>
+                <div class="listCart">
+                    <div class="item">
+
+                    </div>
+                </div>
+                <div class="btn">
+                    <button id="closeCart" class="close">ĐÓNG</button>
+
+                    <button class="checkOut">ĐẶT HÀNG</button>
+                </div>
+            </div>
+        </div>
+        <!------------------------LOGIN-FORM---------------------->
+        <div id = "login-form" style="display: none;">
+            <div class="container">
+                <input type="checkbox" id="check">
+                <div id="loginForm" class="login form">
+                  <div class="header">Login</div>
+                  <form action="#">
+                    <input id="loginUsername" type="text" placeholder="Enter your username">
+                    <input id="loginPassword" type="password" placeholder="Enter your password">
+                    <input type="button" class="button" value="Login" onclick="getLoginValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Don't have an account?
+                     <label for="check">Signup</label>
+                    </span>
+                  </div>
+                </div>
+                <div id="signUpForm" class="registration form">
+                  <div class="header">Signup</div>
+                  <form action="#">
+                    <input id="signUpUsername" type="text" placeholder="Nhập username" required>
+                    <input id="signUpEmail" type="text" placeholder="Nhập email" required>
+                    <input id="signUpPassword1" type="password" placeholder="Tạo mật khẩu" required>
+                    <input id="signUpPassword2" type="password" placeholder="Xác nhận mật khẩu" required>
+                    <input id="address" type="address" placeholder="Nhập đỉa chỉ" required>
+                    <input type="button" class="button" value="Signup" onclick="getSignUpValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Already have an account?
+                     <label for="check">Login</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div id="productDetail1" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--1-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo1()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg RS e-tron GT.png" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Audi RS e-tron GT</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Điện</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Audi</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 5,900,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Nhìn trực diện, đầu xe Audi E-tron GT 2023 mang đường nét mảnh mai, uyển chuyển. Điểm nổi bật nhất ở phần đầu đó chính là lưới tản nhiệt đã được thay thế bằng bộ khuôn sơn đen hình lục giác. Nhiều đường dập nổi trên nắp capo giúp xe tăng thêm tính khí động học.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg RS e-tron GT.png" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Nhìn từ bên hông, thân xe Audi E-Tron GT 2023 gây ấn tượng với tạo hình mui dài. Trần xe bo góc nhẹ nhàng và hạ thấp dần về phía sau. Hai bên đã được hãng tiết chế những đường gân/dập giúp tăng hiệu suất cản gió. Vỏ bọc bên ngoài GT làm hoàn toàn từ hợp kim nhôm, các bộ phận khác làm từ thép dập nóng.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg RS e-tron GT.png" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Đuôi xe E-tron GT 2023 hạ thấp từ trụ C đậm chất thể thao. Cụm đèn hậu dạng tia hình mũi tên được nối liền bởi một dải LED mỏng giúp phía sau liền mạch và thống nhất hơn. Phía trên là cánh gió gắn liền với thân xe.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg RS e-tron GT.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="productDetail2" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--2-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo2()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg e-tron GT Quattro.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Audi e-tron GT Quattro</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Điện</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Audi</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 5,200,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Nhìn trực diện, đầu xe Audi E-tron GT 2023 mang đường nét mảnh mai, uyển chuyển. Điểm nổi bật nhất ở phần đầu đó chính là lưới tản nhiệt đã được thay thế bằng bộ khuôn sơn đen hình lục giác. Nhiều đường dập nổi trên nắp capo giúp xe tăng thêm tính khí động học.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg e-tron GT Quattro.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Nhìn từ bên hông, thân xe Audi E-Tron GT 2023 gây ấn tượng với tạo hình mui dài. Trần xe bo góc nhẹ nhàng và hạ thấp dần về phía sau. Hai bên đã được hãng tiết chế những đường gân/dập giúp tăng hiệu suất cản gió. Vỏ bọc bên ngoài GT làm hoàn toàn từ hợp kim nhôm, các bộ phận khác làm từ thép dập nóng.                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg e-tron GT Quattro.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Đuôi xe E-tron GT 2023 hạ thấp từ trụ C đậm chất thể thao. Cụm đèn hậu dạng tia hình mũi tên được nối liền bởi một dải LED mỏng giúp phía sau liền mạch và thống nhất hơn. Phía trên là cánh gió gắn liền với thân xe.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg e-tron GT Quattro.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail3" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--3-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo3()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Audi R8.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Audi R8</h2>
+                        <p id="productType" class="productType">Loại xe: SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: </p>
+                        <h4 id="productPrice" class="productPrice">Giá: 10,000,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Trong lần nâng cấp mới nhất, Audi đã thay đổi một chút ngoại thất của R8. Đầu xe vẫn nổi bật với lưới tản nhiệt dạng Single Frame cỡ lớn họa tiết tổ ong, đường viền xung quanh được thiết kế lại trông mới mẻ hơn. Trên lưới tản nhiệt có 3 khe thông gió, 2 hốc gió 2 bên cũng được tinh chỉnh lại với cánh chia gió mới. Hệ thống đèn Full LED là trang bị tiêu chuẩn của Audi R8 V10 Coupe. Logo 4 vòng tròn lồng vào nhau đặc trưng vẫn được Audi dành vị trí dễ nhìn trên nắp capo.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Audi R8.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Nhìn từ phía hông xe, điểm thu hút không thể không nhắc đến chính là bộ mâm thể thao 20 ich kết hợp phanh hiệu suất cao. Ngoài ra, những đường gân dập nổi khỏe khoắn càng tôn thêm vẻ mạnh mẽ cho R8. Cửa kính không viền, gương chiếu hậu và các đường nét khác của Audi R8 khiến người nhìn mê mẩn. 
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Audi R8.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Ở đuôi xe, cản va sau là những khe thoát nhiệt lớn hơn. Cụm đèn hậu sử dụng công nghệ LED ma trận cực kỳ ấn tượng. Hai ống xả kép cỡ lớn được đặt đối xứng, tăng thêm cảm giác hầm hố. Cánh gió trang bị tiêu chuẩn giúp xe trông mạnh mẽ, phong cách hơn.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Audi R8.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail4" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--4-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo4()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Continental GT.webp" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Bentley Continental GT</h2>
+                        <p id="productType" class="productType">Loại xe: SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Bentley</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 21,500,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Ngoại hình Bentley Continental GT 2023 có phần bóng bẩy, sắc sảo hơn song vẫn mang đậm phong cách quý tộc, thời thượng của mẫu xe sang Anh quốc. Đầu xe nổi bật với lưới tản nhiệt lớn, thiết kế vuông vức. Tạo hình mắt cáo cầu kỳ cùng chất liệu crom phía bên trong càng tăng thêm vẻ sang trọng, đẳng cấp cho 
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Continental GT.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Tiến về khu vực thân xe Bentley Continental GT 2023, điểm dễ dàng nhận thấy nhất chính là sự xuất hiện dày đặc của các đường gân dập nổi, mang đến cái nhìn cơ bắp, khỏe khoắn hơn cho mẫu xe sang.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Continental GT.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Khu vực đuôi xe Bentley Continental 2023 vẫn giữ nguyên thiết kế mái dốc vốn đặc trưng của dòng GT (Grand Tourer hay Grand Turismo: xe thể thao hạng sang) song được đánh giá là có phần tối giản và tinh tế hơn so với thế hệ cũ.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Continental GT.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail5" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--5-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo5()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Bentley Continental GTC.png" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Bentley Continental GTC</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Convertible</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Bentley</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 11,000,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Phần đầu xe nổi bật với lưới tản nhiệt mạ chrome và cụm đèn pha tròn đặc trưng của Bentley. Cản trước nguyên bản đã được thay bằng loại của phiên bản Speed với phần hốc hút gió trung tâm to hơn.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Bentley Continental GTC.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Thân xe sở hữu cụm gương chiếu hậu tích hợp đèn báo rẽ, bộ mâm 5 chấu sơn bạc kích thước 19 inch. Bentley Continental GTC sử dụng mui dạng nỉ màu xanh với cơ cấu đóng/mở điện.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Bentley Continental GTC.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Phía sau nổi bật với cụm đèn pha dạng LED thiết kế hình oval giống với thiết kế của phần ống xả. Khi ấn vào logo hình chữ B, phần cốp của xe sẽ được mở lên.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Bentley Continental GTC.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail6" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--6-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo6()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Bentley Muslanne.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Bentley Muslanne</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Sedan</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Bentley</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 20,000,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Phía đầu xe là biểu tượng logo chữ B quen thuộc với đôi cánh được tạo ra từ chất liệu không gỉ, có thể tụt xút nếu có một lực tác động vào. Đây được là điểm nhấn nổi bật nhất để khẳng định được vị trí “người dẫn đầu” của dòng xe này. Bên cạnh đó, cụm đèn pha Full – LED dạng ma trận cũng sẽ tôn thêm vẻ lộng lẫy của chiếc Mulsanne vào ban đêm. 
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Bentley Muslanne.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Phần thân xe được làm bằng thép nguyên khối, khả năng hấp thụ xung lực tốt đảm bảo an toàn cho người ngồi phía trong. Phần trụ B của xe được mạ crom dày khiến chiếc xe trở nên sang và đẳng cấp hơn.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Bentley Muslanne.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Gương chiếu hậu được điều chỉnh điện gập mở tùy ý, có khả năng tự sấy gương và tích hợp đèn báo rẽ. Bước sang thế hệ mới , cụm đèn hậu được thiết kế hình chữ B với 2 bóng chính thay vì 3 bóng so với những phiên bản cũ. Bên dưới phía sau đuôi xe là hình ống xả oval mạ kim loại quen thuộc.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Bentley Muslanne.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail7" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--7-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo7()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg BMW i7 xDrive60.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">BMW i7 xDrive60</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Điện</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: BMW</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 9,200,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Ở phần đầu, dù là xe thuần điện nhưng mẫu xe này vẫn có lưới tản nhiệt hình quả thận đặc trưng của BMW, dĩ nhiên nó sẽ chỉ là chi tiết trang trí. Phía trên là logo và nắp ca-pô sở hữu những đường gân nổi đầy cá tính.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg BMW i7 xDrive60.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Nhìn ngang phần thân, BMW i7 2024 có thiết kế theo phong cách bầu bĩnh, bộ mâm được thay mới cầu kỳ hơn dạng 5 chấu kép hình chữ V. Điểm nhấn của mẫu xe này đến từ thay nắm cửa ẩn vào thân xe giúp gia tăng tính khí động học. Người dùng sẽ mở cửa bằng cách chạm vào nút bấm ở khu vực tay nắm cửa, đây là chi tiết mới thú vị trên BMW 7-Series đời mới.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg BMW i7 xDrive60.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Ra đến phần đuôi, thay vì đèn nối liền như cũ, BMW i7 đời mới có cặp đèn hậu thanh mảnh hơn và tách biệt 2 bên. Khu vực cản sau của xe chứa nơi gắn biển số, kéo dài sang 2 bên là đèn phản quang cùng chi tiết hốc gió giả mới lạ.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg BMW i7 xDrive60.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail8" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--8-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo8()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg BMW Z4 Roadster.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">BMW Z4 Roadster</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Convertible</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: BMW</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 3,500,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Phần đầu xe, BMW Z4 2023 “chơi trội” với cụm lưới tản nhiệt hình quả thận nằm ngang đi cùng với những chi tiết làm từ chất liệu nhôm tráng men. Nổi bật hai bên là cặp mắt sắc sử dụng đèn LED thích ứng đem đến khả năng chiếu sáng linh hoạt. Các đường gân dập nổi trên nắp capo càng làm cho tổng thể chiếc xe thêm phần “nam tính”. Nằm gọn gàng phía dưới chân BMW Z4 là hốc hút gió họa tiết tổ ong sát mặt lưới tản nhiệt. Cản trước xe vuốt nhọn sắc xảo.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg BMW Z4 Roadster.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Chân xe BMW Z4 2023 thêm phần mạnh mẽ từ những đường gân nổi chạy từ đầu đến phần đuôi. Điểm nhấn tại phần hông có lẽ là khe thoát khí nằm lõm lòng phía trong giúp tăng tính khí động học khi xe tăng tốc. Cửa xe thiết kế mở chéo mới lạ. Gương và tay nắm cửa của sDrive30i M Sport cùng màu thân xe. Gương có chức năng chỉnh/gập điện và chống chói tự động.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg BMW Z4 Roadster.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Vòng về đuôi xe, BMW Z4 2023 gây ấn tượng khi có phần phía sau ngắn. Đây được xem là một nét đặc trưng của những dòng xe Roadster. Nhiều đánh giá cho rằng nhờ những mảng khối riêng biệt giúp cho phiên bản BMW Z4 thế hệ mới trông bắt mắt và hầm hố hơn.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg BMW Z4 Roadster.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail9" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--9-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo9()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg FordEverest2023.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Ford Everest 2023</h2>
+                        <p id="productType" class="productType">Loại xe: Xe SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Ford</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 1,500,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Ngoại hình Everest thế hệ mới được thay đổi hoàn toàn với thiết kế nam tính và cứng cáp hơn. Nắp ca-pô cũng được làm hầm hố với nhiều đường gân dập nổi, các chi tiết bo tròn trên thế hệ cũ không xuất hiện.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Everest 2023.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Nhìn từ chiều ngang, thân xe của Everest vẫn toát lên vẻ nam tính, cứng cáp với những đường nét thiết kế vuông vức. Các chi tiết tay nắm cửa, viền cửa kính, ốp gương... được mạ crom tăng thêm sự cao cấp và hiện đại. Riêng trên bản Sport thì những chi tiết mạ crom lại được sơn đen để tăng thêm vẻ thể thao.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Everest 2023.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Phần đuôi của Ford Everest được thiết kế mang nhiều nét mềm mại nhất so với tổng thể. Điểm nhấn là cụm đèn hậu LED nối liền qua dải chữ Everest dạng chữ to bản ở chính giữa. Cản sau được bổ sung đèn phản quang.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Everest 2023.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+
+        <div id="productDetail10" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--10-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo10()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Territory2023.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Ford Territory 2023</h2>
+                        <p id="productType" class="productType">Loại xe: Xe SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Ford</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 1,000,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Do là một mẫu xe liên doanh giữa tập đoàn JMC và Ford, Territory có thiết kế gần như giống hệt mẫu xe độc quyền Equator Sport tại thị trường Trung Quốc.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Territory 2023.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Nhìn từ phía ngang thân xe, Territory có thiết kế khá giống với mẫu xe Hyundai SantaFe. Cả viền kính lẫn tay nắm cửa được nẹp crom sáng bóng. Những đường gân dập nổi chạy dọc hai bên thân xe cũng tôn lên vẻ ngoài cơ bắp và nam tính.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Territory 2023.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Phần đuôi của Territory cũng được làm hết sức vuông vức, tạo nên sự liền mạch với thiết kế tổng thể của chiếc xe. Cụm đèn hậu được làm dạng dải đèn LED có ứng dụng công nghệ chiếu sáng mới của Ford. Hệ thống Camera phía sau, cảm biến đỗ xe cũng được trang bị đầy đủ. Xe cũng có cả cánh lướt gió và đèn phanh trên cao.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Territory 2023.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail11" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--11-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo11()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg FordFocus.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Ford Focus</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Sedan</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Ford</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 800,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Tổng thể ngoại thất của Explorer không có quá nhiều sự thay đổi rõ rệt so với phiên bản tiền nhiệm; thay vào đó Ford tập trung vào việc hoàn thiện các chi tiết và cải thiện sự tinh tế.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Ford Focus.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Phần thân xe gây ấn tượng với những đường gân nổi khỏe khoắn, chạy dài về phía sau kết hợp với cụm đèn hậu được thiết kế thanh lịch hơn. Cửa kính hàng ghế thứ 2 và 3 là loại kính tối màu, chống nhìn xuyên thấu để đảm bảo sự riêng tư.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Ford Focus.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Tương tự bản cũ, thế hệ mới của Explorer sở hữu thiết kế đuôi xe vuông vức. Cụm đèn hậu được thiết kế hoàn toàn mới sử dụng công nghệ LED cho khả năng chiếu sáng tốt hơn. Phía dưới là cụm ống xả kép đối xứng với cản sau thể thao, được ốp tấm thép.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Ford Focus.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail12" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--12-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo12()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Mazda22023.webp" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mazda2 2023</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Sedan</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mazda</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 500,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Đầu xe Mazda 2 2023 ấn tượng với triết lý “Less is more - càng đơn giản càng đẹp” nổi bật trên nền ngôn ngữ thiết kế KODO thế hệ mới. Lưới tản nhiệt kích thước lớn mở rộng. Bên trong, những thanh ngang chạy dài đơn điệu được thay thế lưới kim loại hoạ tiết 3D sang trọng.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Thân xe gọn gàng, thiết kế sống động với những đường dập gân lượn sóng đẹp mắt. Gương chiếu hậu Mazda 2 tích hợp đầy đủ tính năng chỉnh điện và gập điện ở tất cả các phiên bản.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Đuôi xe đồng bộ theo phong cách chung. Xe được trang bị đầy đủ cánh gió thể thao và ăng ten vây cá. Cụm đèn hậu có viền LED kéo dài nhấn sâu vào bên trong. Cản sau khoét sâu cùng kiểu với cản trước. Phần dưới là ốp nhựa cứng cáp.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail13" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--13-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo13()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg CX52023.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mazda CX5 2023</h2>
+                        <p id="productType" class="productType">Loại xe: Xe SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mazda</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 800,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Đầu xe Mazda CX-5 2023 gây ấn tượng mạnh mẽ với cặp đèn thần thái, liền mạch cùng với lưới tản nhiệt đen bóng lỗ nhuyễn mở rộng. Hốc gió dưới kết hợp với dải đèn sương mù chạy ngang dài tạo thành một hõm sâu ôm trọn đầu xe, được nâng đỡ bởi cản trước ốp nhựa thể thao, mang đến cảm giác bề thế và bệ vệ.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg CX-5 2023.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Thân xe Mazda CX-5 2023 vẫn là sự kết hợp giữa vẻ mềm mại, sống động của những đường gân dập nổi, cùng vẻ mạnh mẽ, thể thao của phần ốp vòm bánh xe và thân dưới.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg CX-5 2023.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Đuôi xe Mazda CX-5 2023 thu hút với cánh gió thể thao, cặp đèn hậu đồ hoạ LED bắt mắt và đặc biệt là cản sau ốp chrome sáng bóng kết hợp bộ đôi ống xả kép nằm đối xứng. Đây là một chi tiết mà hãng Thaco đã “nội địa hoá” nhằm đáp ứng sở thích của số đông người dùng Việt
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg CX-5 2023.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail14" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--14-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo14()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Mazda CX-30.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mazda CX-30</h2>
+                        <p id="productType" class="productType">Loại xe: Xe SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mazda</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 700,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Được định vị là một mẫu xe mới hoàn toàn, ít liên quan nhất tới dải crossover hiện có, nhưng nếu so với CX-3 thì thiết kế của CX-30 nhìn gần gũi với CX-5 hơn nhiều. Phần đầu xe của Mazda CX-30 được thiết kế với những đường nét uốn lượn rất tinh tế và hiện đại, gây ấn tượng mạnh mẽ cho người nhìn.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Mazda CX-30.png" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Thân xe của Mazda CX-30 được thiết kế với những đường cong mềm mại, tạo nên vẻ đẹp tinh tế cũng như tăng hiệu quả khí động học cho xe. Gương xe được bố trí trên cánh cửa giúp tăng thêm tầm nhìn cho người lái. Bên cạnh đó gương còn được tích hợp đầy đủ các tính năng gập điện, chỉnh điện, có đèn báo rẽ.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Mazda CX-30.png" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Thiết kế phần đuôi của Mazda CX-30 có thể nói thuộc vào hàng đẹp nhất trong các mẫu CUV của nhà Mazda. Cụm đèn hậu LED được làm vô cùng sắc nét với thiết kế giống như đôi mắt, được làm tối màu giúp tăng thêm tính trẻ trung và hiện đại.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Mazda CX-30.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail15" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--15-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo15()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg EQS 500.png" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mercedes EQS 500</h2>
+                        <p id="productType" class="productType">Loại xe: Xe SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mercedes</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 5,000,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Nhìn từ trực diện, EQS SUV 500 dễ dàng thu hút mọi ánh nhìn trên đường với lưới tản nhiệt Panamerica, bên trong là cấu trúc dạng “trời sao” độc đáo.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Hông xe EQS SUV 500 có thiết kế mềm mại, tỷ lệ hài hoà, mang nét đẹp thanh lịch. Nhờ sử dụng vật liệu nhôm và thép không gỉ, khung xe có trọng lượng nhẹ hơn nhưng độ cứng lại tối ưu hơn giúp đảm bảo an toàn tối đa cho hành khách.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Nổi bật nhất ở phần đuôi xe là cụm đèn hậu kéo dài OLED cực sắc nét góp phần tạo nên tổng thể hiện đại, hơi hướng tương lai. Không sở hữu hệ thống ống xả thể thao như các mẫu xe sử dụng động cơ đốt trong nhưng EQS SUV 500 vẫn tự tin mang đến hiệu suất vận hành ấn tượng nhờ có hệ thống thoát khí ẩn và cánh lướt gió được tối ưu.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail16" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--16-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo16()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg 580-4Matic.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mercedes 580 4Matic</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Điện</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mercedes</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 6,000,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Mercedes-Benz EQS 580 4Matic sở hữu ngoại hình khác biệt với những mẫu xe mang logo ngôi sao ba cánh. Mui xe được thiết kế thấp, phần kính chắn gió kéo về phía trước. 
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg 580 4Matic.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Chiếc sedan điện hạng sang của thương hiệu ngôi sao ba cánh sở hữu những đường cong uyển chuyển ở hai bên hông xe. Đặc biệt, đường cong từ cột C đến phần cốp sau được thiết kế khá tinh tế.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg 580 4Matic.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Phía sau xe trang bị hệ thống đèn hậu với thiết kế ấn tượng. Dải đèn này được bố trí trải dài tinh tế từ trái sang phải, bên trong là bóng LED giúp gia tăng khả năng nhận diện từ phía sau. Cảm hứng thiết kế của đèn hậu đến từ các cuộn dây của bóng đèn sợi đốt.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg 580 4Matic.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail17" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--17-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo17()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Mercedes C300 AMG.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mercedes C300 AMG</h2>
+                        <p id="productType" class="productType">Loại xe: Xe SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mercedes</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 2,500,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            So với phiên bản trước đó thì đầu xe Mercedes Benz C300 thế hệ mới đã thay đổi khá nhiều để mang đến cảm giác tinh giản, thả hơn hơn. Mặt ca lăng có hình dáng phần trên thu nhỏ và phần dưới mở rộng dần. Bộ lưới tản nhiệt kim cương đặc trưng của dòng xe AMG vẫn là điểm cuốn hút chính, tuy nhiên đã được thiết kế lại với vẻ đẹp sắc sảo, huyền bí.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Mercedes C300 AMG.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Khi nhìn từ bên hông, Mercedes C300 AMG 2023 có một thân hình thuôn dài hút mắt. Xe trông càng sang trọng hơn với trục đầu xe đến trụ A chiếm một khoảng lớn trong tổng chiều dài và cabin nằm lùi nhiều về phía sau. Gương chiếu hậu tích hợp đầy đủ các tính năng quan trọng cho xe như chỉnh điện, gập điện, chống chói tự động, nhớ vị trí và đèn báo rẽ.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Mercedes C300 AMG.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Cụm đèn hậu phía sau của Mercedes C300 AMG được lấy cảm hứng từ dòng xe S-Class, với thiết kế đèn LED dạng 3D tinh thể được chia làm các khối. Thiết kế này mang đến sự cuốn hút với góc cạnh đặc biệt. Bộ Body Kit AMG thể thao làm nổi bật cản sau của xe, những đường nét to bản giúp tối ưu hóa khí động học và tạo nên sự hầm hố.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Mercedes C300 AMG.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="category">
+            <!------------------------CATEGORY---------------------->
+            <section class="category">
+               <div class="container">
+                   <div class="row">
+                       <div class="category-left">
+                           <ul>
+                               <li class="category-left-li"><a href="category.html">Tất cả</a></li>
+                               <li class="category-left-li"><a href="categoryAudi.html">Audi</a></li>
+                               <li class="category-left-li"><a href="categoryBentley.html">Bentley</a></li>
+                               <li class="category-left-li"><a href="categoryBMW.html">BMW</a></li>
+                               <li class="category-left-li"><a href="categoryFord.html">Ford</a></li>
+                               <li class="category-left-li"><a href="categoryMazda.html">Mazda</a></li>
+                               <li class="category-left-li"><a href="categoryMercedes.html">Mercedes-Benz</a></li>
+                           </ul>
+                       </div>
+                       <div class="category-right">
+                           <div class="category-right-top-item">
+                               <p id="type">Tất cả</p>
+                               <button><span>Bộ lọc</span><i class="fas fa-sort-down"></i></button>
+                               <select name="" id="">
+                                   <option value="">Sắp xếp</option>
+                                   <option value="">Giá cao đến thấp</option>
+                                   <option value="">Giá thấp đến cao</option>
+                               </select>
+                           </div>
+                           <div id="cars-content" class="category-right-content row">
+                                <!--Sản phẩm hiển thị ở đây-->
+                                <!--sp1-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg RS e-tron GT.png" alt="">
+                                    <h1>Audi RS e-tron GT</h1>
+                                    <p class="product-price">5,900,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo1()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp2-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg e-tron GT Quattro.jpg" alt="">
+                                    <h1>Audi e-tron GT Quattro</h1>
+                                    <p class="product-price">5,200,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo2()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp3-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Audi R8.jpg" alt="">
+                                    <h1>Audi R8</h1>
+                                    <p class="product-price">10,000,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo3()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp4-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Continental GT.webp" alt="">
+                                    <h1>Bentley Continental GT</h1>
+                                    <p class="product-price">21,500,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo4()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp5-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Bentley Continental GTC.png" alt="">
+                                    <h1>Bentley Continental GTC</h1>
+                                    <p class="product-price">11,000,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo5()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp6-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Bentley Muslanne.jpg" alt="">
+                                    <h1>Bentley Muslanne</h1>
+                                    <p class="product-price">20,000,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo6()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp7-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg BMW i7 xDrive60.jpg" alt="">
+                                    <h1>BMW i7 xDrive60</h1>
+                                    <p class="product-price">9,200,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo7()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp8-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg BMW Z4 Roadster.jpg" alt="">
+                                    <h1>BMW Z4 Roadster</h1>
+                                    <p class="product-price">3,500,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo8()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp9-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg FordEverest2023.jpg" alt="">
+                                    <h1>Ford Everest 2023</h1>
+                                    <p class="product-price">1,500,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo9()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp10-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Territory2023.jpg" alt="">
+                                    <h1>Ford Territory 2023</h1>
+                                    <p class="product-price">1,000,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo10()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp11-->
+                                <div class="category-right-content-item">
+                                    <img src="img/frontImg Ford Focus.jpg" alt="">
+                                    <h1>Ford Focus</h1>
+                                    <p class="product-price">800,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo11()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp12-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Mazda22023.webp" alt="">
+                                    <h1>Mazda2 2023</h1>
+                                    <p class="product-price">500,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo12()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp13-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg CX52023.jpg" alt="">
+                                    <h1>Mazda CX5 2023</h1>
+                                    <p class="product-price">800,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo13()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp14-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Mazda CX-30.jpg" alt="">
+                                    <h1>Mazda CX-30</h1>
+                                    <p class="product-price">700,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo14()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp15-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg EQS 500.png" alt="">
+                                    <h1>Mercedes EQS 500</h1>
+                                    <p class="product-price">5,000,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo15()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp16-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg 580-4Matic.jpg" alt="">
+                                    <h1>Mercedes 580 4Matic</h1>
+                                    <p class="product-price">6,000,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo16()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp17-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Mercedes C300 AMG.jpg" alt="">
+                                    <h1>Mercedes C300 AMG</h1>
+                                    <p class="product-price">2,500,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo17()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
+                                </div>
+                           </div>
+                           <div class="category-right-bottom row">
+                               <div id="pagination" class="category-right-bottom-item">
+                                    <ul class="number-page" id="number-page">
+                                        <li><</li>
+                                        <li>1</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                        <li>></li>
+                                    </ul>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </section>        
+        </div>
+        <!------------------------FOOTER---------------------->
+        <div id="footer" class="footer">
+            <div class="footer-container container">
+                <div class="footer-box">
+                    <a href="index.html" class="logo"><img src="img/logo.jpg" alt=""></a>
+                    <div class="social">
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-facebook"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-twitter"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-instagram"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Page</b></h3>
+                    <a href="index.html">Trang chủ</a>
+                    <a href="#" onclick="chuaCapNhat()">Về chúng tôi</a>
+                    <a href="#" onclick="renderCategory()">Mẫu xe</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Chính sách</b></h3>
+                    <a href="#" onclick="chuaCapNhat()">Quyền riêng tư</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách hoàn trả</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách về Cookie</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Liên hệ</b></h3>
+                    <a href="#"><i class='bx bxs-home'><b>Địa chỉ đăng ký</b>: 123 đường A, Phường. B, Quận. C, Thành phố XYZ, Việt Nam</i></a>
+                    <a href="#"><i class='bx bxs-phone'><b>SĐT</b>: 0832963381 </i></a>
+                    <a href="#"><i class='bx bxs-envelope'><b>Email</b>: serviceN&K@gmail.com</i></a>
+                </div>
+            </div>
+            <div class="copy-right">
+                <p style="color: black;"> <b>© 2023 Công ty Ô tô N & K. Bản quyền thuộc về chúng tôi.</b></p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <title>XE HƠI</title> 
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
+        <script src="js/cart.js" defer></script>
+        <script src="js/index.js" defer></script>
+    </head>
+    <body>
+        <!------------------------HEADER---------------------->
+        <header id="myHeader">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.jpg" alt=""></a>
+            </div>
+
+            <div class="menu">
+                <li><a href="index.html"><b>TRANG CHỦ</b></a></li>
+                <li onclick="chuaCapNhat()"><b>VỀ CHÚNG TÔI</b></li>
+                <li><a href="category.html"><b>MẪU XE</b></a></li>
+            </div>
+
+            <div id="others" class="others">
+                <li><input id="search" placeholder="TÌM KIẾM" type="text" oninput="search()" > <i id="searchBtn" class="fas fa-search"></i></li>
+                <div>
+                    <li id="customerName1" onclick="renderLoginForm()"><img src="img/user.png" alt="" ></li>
+                    <li id="customerName2" style="display: none; font-weight: bold;">
+                        <p id="hello"></p>
+                        <ul class="dropDownCustomerName2">
+                            <a >Cài đặt</a>
+                            <a id="logout">Đăng xuất</a>
+                        </ul>
+                    </li>
+                </div>
+                <div class="icon-cart">
+                    <li><img src="img/shopping-cart.png" alt="" id="cart-icon"></li>
+                    <span>0</span>
+                </div>
+            </div>
+        </header>
+        <!------------------------CART---------------------->
+        <div id="showCart" class="showCart" style="display: none;">
+            <div id="cart-tab" class="cartTab" >
+                <h1>GIỎ HÀNG</h1>
+                <div class="listCart">
+                    <div class="item">
+
+                    </div>
+                </div>
+                <div class="btn">
+                    <button id="closeCart" class="close">ĐÓNG</button>
+
+                    <button class="checkOut">ĐẶT HÀNG</button>
+                </div>
+            </div>
+        </div>
+        <!------------------------LOGIN-FORM---------------------->
+        <div id = "login-form" style="display: none;">
+            <div class="container">
+                <input type="checkbox" id="check">
+                <div id="loginForm" class="login form">
+                  <div class="header">Login</div>
+                  <form action="#">
+                    <input id="loginUsername" type="text" placeholder="Enter your username">
+                    <input id="loginPassword" type="password" placeholder="Enter your password">
+                    <input type="button" class="button" value="Login" onclick="getLoginValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Don't have an account?
+                     <label for="check">Signup</label>
+                    </span>
+                  </div>
+                </div>
+                <div id="signUpForm" class="registration form">
+                  <div class="header">Signup</div>
+                  <form action="#">
+                    <input id="signUpUsername" type="text" placeholder="Nhập username" required>
+                    <input id="signUpEmail" type="text" placeholder="Nhập email" required>
+                    <input id="signUpPassword1" type="password" placeholder="Tạo mật khẩu" required>
+                    <input id="signUpPassword2" type="password" placeholder="Xác nhận mật khẩu" required>
+                    <input id="address" type="address" placeholder="Nhập đỉa chỉ" required>
+                    <input type="button" class="button" value="Signup" onclick="getSignUpValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Already have an account?
+                     <label for="check">Login</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div id="productDetail12" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--12-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo12()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Mazda22023.webp" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mazda2 2023</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Sedan</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mazda</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 500,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Đầu xe Mazda 2 2023 ấn tượng với triết lý “Less is more - càng đơn giản càng đẹp” nổi bật trên nền ngôn ngữ thiết kế KODO thế hệ mới. Lưới tản nhiệt kích thước lớn mở rộng. Bên trong, những thanh ngang chạy dài đơn điệu được thay thế lưới kim loại hoạ tiết 3D sang trọng.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Thân xe gọn gàng, thiết kế sống động với những đường dập gân lượn sóng đẹp mắt. Gương chiếu hậu Mazda 2 tích hợp đầy đủ tính năng chỉnh điện và gập điện ở tất cả các phiên bản.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Đuôi xe đồng bộ theo phong cách chung. Xe được trang bị đầy đủ cánh gió thể thao và ăng ten vây cá. Cụm đèn hậu có viền LED kéo dài nhấn sâu vào bên trong. Cản sau khoét sâu cùng kiểu với cản trước. Phần dưới là ốp nhựa cứng cáp.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail13" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--13-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo13()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg CX52023.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mazda CX5 2023</h2>
+                        <p id="productType" class="productType">Loại xe: Xe SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mazda</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 800,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Đầu xe Mazda CX-5 2023 gây ấn tượng mạnh mẽ với cặp đèn thần thái, liền mạch cùng với lưới tản nhiệt đen bóng lỗ nhuyễn mở rộng. Hốc gió dưới kết hợp với dải đèn sương mù chạy ngang dài tạo thành một hõm sâu ôm trọn đầu xe, được nâng đỡ bởi cản trước ốp nhựa thể thao, mang đến cảm giác bề thế và bệ vệ.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg CX-5 2023.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Thân xe Mazda CX-5 2023 vẫn là sự kết hợp giữa vẻ mềm mại, sống động của những đường gân dập nổi, cùng vẻ mạnh mẽ, thể thao của phần ốp vòm bánh xe và thân dưới.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg CX-5 2023.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Đuôi xe Mazda CX-5 2023 thu hút với cánh gió thể thao, cặp đèn hậu đồ hoạ LED bắt mắt và đặc biệt là cản sau ốp chrome sáng bóng kết hợp bộ đôi ống xả kép nằm đối xứng. Đây là một chi tiết mà hãng Thaco đã “nội địa hoá” nhằm đáp ứng sở thích của số đông người dùng Việt
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg CX-5 2023.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail14" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--14-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo14()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Mazda CX-30.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mazda CX-30</h2>
+                        <p id="productType" class="productType">Loại xe: Xe SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mazda</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 700,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Được định vị là một mẫu xe mới hoàn toàn, ít liên quan nhất tới dải crossover hiện có, nhưng nếu so với CX-3 thì thiết kế của CX-30 nhìn gần gũi với CX-5 hơn nhiều. Phần đầu xe của Mazda CX-30 được thiết kế với những đường nét uốn lượn rất tinh tế và hiện đại, gây ấn tượng mạnh mẽ cho người nhìn.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Mazda CX-30.png" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Thân xe của Mazda CX-30 được thiết kế với những đường cong mềm mại, tạo nên vẻ đẹp tinh tế cũng như tăng hiệu quả khí động học cho xe. Gương xe được bố trí trên cánh cửa giúp tăng thêm tầm nhìn cho người lái. Bên cạnh đó gương còn được tích hợp đầy đủ các tính năng gập điện, chỉnh điện, có đèn báo rẽ.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Mazda CX-30.png" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Thiết kế phần đuôi của Mazda CX-30 có thể nói thuộc vào hàng đẹp nhất trong các mẫu CUV của nhà Mazda. Cụm đèn hậu LED được làm vô cùng sắc nét với thiết kế giống như đôi mắt, được làm tối màu giúp tăng thêm tính trẻ trung và hiện đại.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Mazda CX-30.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="category">
+            <!------------------------CATEGORY---------------------->
+            <section class="category">
+               <div class="container">
+                   <div class="row">
+                       <div class="category-left">
+                           <ul>
+                               <li class="category-left-li"><a href="category.html">Tất cả</a></li>
+                               <li class="category-left-li"><a href="categoryAudi.html">Audi</a></li>
+                               <li class="category-left-li"><a href="categoryBentley.html">Bentley</a></li>
+                               <li class="category-left-li"><a href="categoryBMW.html">BMW</a></li>
+                               <li class="category-left-li"><a href="categoryFord.html">Ford</a></li>
+                               <li class="category-left-li"><a href="categoryMazda.html">Mazda</a></li>
+                               <li class="category-left-li"><a href="categoryMercedes.html">Mercedes-Benz</a></li>
+                           </ul>
+                       </div>
+                       <div class="category-right">
+                           <div class="category-right-top-item">
+                               <p id="type">Mazda</p>
+                               <button><span>Bộ lọc</span><i class="fas fa-sort-down"></i></button>
+                               <select name="" id="">
+                                   <option value="">Sắp xếp</option>
+                                   <option value="">Giá cao đến thấp</option>
+                                   <option value="">Giá thấp đến cao</option>
+                               </select>
+                           </div>
+                           <div id="cars-content" class="category-right-content row">
+                                <!--Sản phẩm hiển thị ở đây-->
+                                <!--sp12-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Mazda22023.webp" alt="">
+                                    <h1>Mazda2 2023</h1>
+                                    <p class="product-price">500,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo12()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp13-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg CX52023.jpg" alt="">
+                                    <h1>Mazda CX5 2023</h1>
+                                    <p class="product-price">800,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo13()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp14-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Mazda CX-30.jpg" alt="">
+                                    <h1>Mazda CX-30</h1>
+                                    <p class="product-price">700,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo14()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                </div>
+                           </div>
+                           <div class="category-right-bottom row">
+                               <div id="pagination" class="category-right-bottom-item">
+                                    <ul class="number-page" id="number-page">
+                                        <li><</li>
+                                        <li>1</li>
+                                        <li>></li>
+                                    </ul>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </section>        
+        </div>
+        <!------------------------FOOTER---------------------->
+        <div id="footer" class="footer">
+            <div class="footer-container container">
+                <div class="footer-box">
+                    <a href="index.html" class="logo"><img src="img/logo.jpg" alt=""></a>
+                    <div class="social">
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-facebook"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-twitter"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-instagram"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Page</b></h3>
+                    <a href="index.html">Trang chủ</a>
+                    <a href="#" onclick="chuaCapNhat()">Về chúng tôi</a>
+                    <a href="#" onclick="renderCategory()">Mẫu xe</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Chính sách</b></h3>
+                    <a href="#" onclick="chuaCapNhat()">Quyền riêng tư</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách hoàn trả</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách về Cookie</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Liên hệ</b></h3>
+                    <a href="#"><i class='bx bxs-home'><b>Địa chỉ đăng ký</b>: 123 đường A, Phường. B, Quận. C, Thành phố XYZ, Việt Nam</i></a>
+                    <a href="#"><i class='bx bxs-phone'><b>SĐT</b>: 0832963381 </i></a>
+                    <a href="#"><i class='bx bxs-envelope'><b>Email</b>: serviceN&K@gmail.com</i></a>
+                </div>
+            </div>
+            <div class="copy-right">
+                <p style="color: black;"> <b>© 2023 Công ty Ô tô N & K. Bản quyền thuộc về chúng tôi.</b></p>
+            </div>
+        </div>
+    </body>
+</html>

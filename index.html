@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <title>XE HƠI</title> 
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
+        <script src="js/index.js" defer></script>
+        <script src="js/cart.js" defer></script>
+    </head>
+    <body>
+        <!------------------------HEADER---------------------->
+        <header id="myHeader">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.jpg" alt=""></a>
+            </div>
+
+            <div class="menu">
+                <li><a href="index.html"><b>TRANG CHỦ</b></a></li>
+                <li onclick="chuaCapNhat()"><b>VỀ CHÚNG TÔI</b></li>
+                <li><a href="category.html"><b>MẪU XE</b></a></li>
+            </div>
+
+            <div id="others" class="others">
+                <li><input id="search" placeholder="TÌM KIẾM" type="text" oninput="search()" > <i id="searchBtn" class="fas fa-search"></i></li>
+                <div>
+                    <li id="customerName1" onclick="renderLoginForm()"><img src="img/user.png" alt="" ></li>
+                    <li id="customerName2" style="display: none; font-weight: bold;">
+                        <p id="hello"></p>
+                        <ul class="dropDownCustomerName2">
+                            <a >Cài đặt</a>
+                            <a id="logout">Đăng xuất</a>
+                        </ul>
+                    </li>
+                </div>
+                <div class="icon-cart" style="display: none;">
+                    <li><img src="img/shopping-cart.png" alt="" id="cart-icon" ></li>
+                    <span>0</span>
+                </div>
+            </div>
+        </header>
+        <!------------------------CART---------------------->
+        <div id="showCart" class="showCart" style="display: none;">
+            <div id="cart-tab" class="cartTab" >
+                <h1>GIỎ HÀNG</h1>
+                <div class="listCart">
+                    <div class="item">
+
+                    </div>
+                </div>
+                <div class="btn">
+                    <button id="closeCart" class="close">ĐÓNG</button>
+
+                    <button class="checkOut">ĐẶT HÀNG</button>
+                </div>
+            </div>
+        </div>
+        <!------------------------LOGIN-FORM---------------------->
+        <div id = "login-form" style="display: none;">
+            <div class="container">
+                <input type="checkbox" id="check">
+                <div id="loginForm" class="login form">
+                  <div class="header">Login</div>
+                  <form action="#">
+                    <input id="loginUsername" type="text" placeholder="Enter your username">
+                    <input id="loginPassword" type="password" placeholder="Enter your password">
+                    <input type="button" class="button" value="Login" onclick="getLoginValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Don't have an account?
+                     <label for="check">Signup</label>
+                    </span>
+                  </div>
+                </div>
+                <div id="signUpForm" class="registration form">
+                  <div class="header">Signup</div>
+                  <form action="#">
+                    <input id="signUpUsername" type="text" placeholder="Nhập username" required>
+                    <input id="signUpEmail" type="text" placeholder="Nhập email" required>
+                    <input id="signUpPassword1" type="password" placeholder="Tạo mật khẩu" required>
+                    <input id="signUpPassword2" type="password" placeholder="Xác nhận mật khẩu" required>
+                    <input id="address" type="address" placeholder="Nhập đỉa chỉ" required>
+                    <input type="button" class="button" value="Signup" onclick="getSignUpValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Already have an account?
+                     <label for="check">Login</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div id="trangchu">
+            <!------------------------SLIDER---------------------->
+            <section id="slider">
+                <div class="aspect-ratio-169">
+                    <img src="img/Audi.jpg" alt="">
+                    <img src="img/Bentley.jpg" alt="">
+                    <img src="img/BMW.jpg" alt="">
+                    <img src="img/Ford.jpg" alt="">
+                    <img src="img/Mazda.webp" alt="">
+                </div>
+
+                <div class="dot-container">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div div class="dot"></div>
+                </div>
+            </section>
+            <!------------------------CARS SECTION---------------------->
+            <section class="cars" id="cars">
+                <div class="heading">
+                    <a href="category.html"><span>Tất Cả Xe</span></a>
+                    <h2>Chúng tôi có những hãng xe mà bạn đang tìm kiếm</h2>
+                </div>
+                <!--Cars Container-->
+                <div class="cars-container">
+                    <!--Box 1-->
+                    <li class="box">
+                        <a href="categoryAudi.html"><img src="img/Audi1.jpg" alt=""></a>
+                        <h2>Audi</h2>
+                    </li>
+                    <!--Box 2-->
+                    <li class="box">
+                        <a href="categoryBentley.html"><img src="img/Bentley1.jpg" alt=""></a>
+                        <h2>Bentley</h2>
+                    </li>
+                    <!--Box 3-->
+                    <li class="box">
+                        <a href="categoryBMW.html"><img src="img/BMW1.jpg" alt=""></a>
+                        <h2>BMW</h2>
+                    </li>
+                    <!--Box 4-->
+                    <li class="box">
+                        <a href="categoryFord.html"><img src="img/Ford1.jpg" alt=""></a>
+                        <h2>Ford</h2>
+                    </li>
+                    <!--Box 5-->
+                    <li class="box">
+                        <a href="categoryMazda.html"><img src="img/Mazda1.jpg" alt=""></a>
+                        <h2>Mazda</h2>
+                    </li>
+                    <!--Box 6-->
+                    <li class="box">
+                        <a href="categoryMercedes.html"><img src="img/Mercedes1.jpg" alt=""></a>
+                        <h2>Mercedes-Benz</h2>
+                    </li>
+                </div>
+            </section>
+        </div>
+        <!------------------------FOOTER---------------------->
+        <div id="footer" class="footer">
+            <div class="footer-container container">
+                <div class="footer-box">
+                    <a href="index.html" class="logo"><img src="img/logo.jpg" alt=""></a>
+                    <div class="social">
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-facebook"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-twitter"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-instagram"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Page</b></h3>
+                    <a href="index.html">Trang chủ</a>
+                    <a href="#" onclick="chuaCapNhat()">Về chúng tôi</a>
+                    <a href="#" onclick="renderCategory()">Mẫu xe</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Chính sách</b></h3>
+                    <a href="#" onclick="chuaCapNhat()">Quyền riêng tư</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách hoàn trả</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách về Cookie</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Liên hệ</b></h3>
+                    <a href="#"><i class='bx bxs-home'><b>Địa chỉ đăng ký</b>: 123 đường A, Phường. B, Quận. C, Thành phố XYZ, Việt Nam</i></a>
+                    <a href="#"><i class='bx bxs-phone'><b>SĐT</b>: 0832963381 </i></a>
+                    <a href="#"><i class='bx bxs-envelope'><b>Email</b>: serviceN&K@gmail.com</i></a>
+                </div>
+            </div>
+            <div class="copy-right">
+                <p style="color: black;"> <b>© 2023 Công ty Ô tô N & K. Bản quyền thuộc về chúng tôi.</b></p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <title>XE HƠI</title> 
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
+        <script src="js/cart.js" defer></script>
+        <script src="js/index.js" defer></script>
+    </head>
+    <body>
+        <!------------------------HEADER---------------------->
+        <header id="myHeader">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.jpg" alt=""></a>
+            </div>
+
+            <div class="menu">
+                <li><a href="index.html"><b>TRANG CHỦ</b></a></li>
+                <li onclick="chuaCapNhat()"><b>VỀ CHÚNG TÔI</b></li>
+                <li><a href="category.html"><b>MẪU XE</b></a></li>
+            </div>
+
+            <div id="others" class="others">
+                <li><input id="search" placeholder="TÌM KIẾM" type="text" oninput="search()" > <i id="searchBtn" class="fas fa-search"></i></li>
+                <div>
+                    <li id="customerName1" onclick="renderLoginForm()"><img src="img/user.png" alt="" ></li>
+                    <li id="customerName2" style="display: none; font-weight: bold;">
+                        <p id="hello"></p>
+                        <ul class="dropDownCustomerName2">
+                            <a >Cài đặt</a>
+                            <a id="logout">Đăng xuất</a>
+                        </ul>
+                    </li>
+                </div>
+                <div class="icon-cart">
+                    <li><img src="img/shopping-cart.png" alt="" id="cart-icon"></li>
+                    <span>0</span>
+                </div>
+            </div>
+        </header>
+        <!------------------------CART---------------------->
+        <div id="showCart" class="showCart" style="display: none;">
+            <div id="cart-tab" class="cartTab" >
+                <h1>GIỎ HÀNG</h1>
+                <div class="listCart">
+                    <div class="item">
+
+                    </div>
+                </div>
+                <div class="btn">
+                    <button id="closeCart" class="close">ĐÓNG</button>
+
+                    <button class="checkOut">ĐẶT HÀNG</button>
+                </div>
+            </div>
+        </div>
+        <!------------------------LOGIN-FORM---------------------->
+        <div id = "login-form" style="display: none;">
+            <div class="container">
+                <input type="checkbox" id="check">
+                <div id="loginForm" class="login form">
+                  <div class="header">Login</div>
+                  <form action="#">
+                    <input id="loginUsername" type="text" placeholder="Enter your username">
+                    <input id="loginPassword" type="password" placeholder="Enter your password">
+                    <input type="button" class="button" value="Login" onclick="getLoginValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Don't have an account?
+                     <label for="check">Signup</label>
+                    </span>
+                  </div>
+                </div>
+                <div id="signUpForm" class="registration form">
+                  <div class="header">Signup</div>
+                  <form action="#">
+                    <input id="signUpUsername" type="text" placeholder="Nhập username" required>
+                    <input id="signUpEmail" type="text" placeholder="Nhập email" required>
+                    <input id="signUpPassword1" type="password" placeholder="Tạo mật khẩu" required>
+                    <input id="signUpPassword2" type="password" placeholder="Xác nhận mật khẩu" required>
+                    <input id="address" type="address" placeholder="Nhập đỉa chỉ" required>
+                    <input type="button" class="button" value="Signup" onclick="getSignUpValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Already have an account?
+                     <label for="check">Login</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div id="productDetail" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Tên sản phẩm</h2>
+                        <p id="productType" class="productType">Loại xe: </p>
+                        <p id="productBrand" class="productBrand">Hãng xe: </p>
+                        <h4 id="productPrice" class="productPrice">Giá: </h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design"></p>
+                        <div class="img-box">
+                            <img id="imgFront" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design"></p>
+                        <div class="img-box">
+                            <img id="imgBody" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design"></p>
+                        <div class="img-box">
+                            <img id="imgTail" src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail4" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--4-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo4()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Continental GT.webp" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Bentley Continental GT</h2>
+                        <p id="productType" class="productType">Loại xe: SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Bentley</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 21,500,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Ngoại hình Bentley Continental GT 2023 có phần bóng bẩy, sắc sảo hơn song vẫn mang đậm phong cách quý tộc, thời thượng của mẫu xe sang Anh quốc. Đầu xe nổi bật với lưới tản nhiệt lớn, thiết kế vuông vức. Tạo hình mắt cáo cầu kỳ cùng chất liệu crom phía bên trong càng tăng thêm vẻ sang trọng, đẳng cấp cho 
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Continental GT.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Tiến về khu vực thân xe Bentley Continental GT 2023, điểm dễ dàng nhận thấy nhất chính là sự xuất hiện dày đặc của các đường gân dập nổi, mang đến cái nhìn cơ bắp, khỏe khoắn hơn cho mẫu xe sang.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Continental GT.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Khu vực đuôi xe Bentley Continental 2023 vẫn giữ nguyên thiết kế mái dốc vốn đặc trưng của dòng GT (Grand Tourer hay Grand Turismo: xe thể thao hạng sang) song được đánh giá là có phần tối giản và tinh tế hơn so với thế hệ cũ.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Continental GT.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail5" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--5-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo5()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Bentley Continental GTC.png" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Bentley Continental GTC</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Convertible</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Bentley</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 11,000,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Phần đầu xe nổi bật với lưới tản nhiệt mạ chrome và cụm đèn pha tròn đặc trưng của Bentley. Cản trước nguyên bản đã được thay bằng loại của phiên bản Speed với phần hốc hút gió trung tâm to hơn.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Bentley Continental GTC.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Thân xe sở hữu cụm gương chiếu hậu tích hợp đèn báo rẽ, bộ mâm 5 chấu sơn bạc kích thước 19 inch. Bentley Continental GTC sử dụng mui dạng nỉ màu xanh với cơ cấu đóng/mở điện.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Bentley Continental GTC.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Phía sau nổi bật với cụm đèn pha dạng LED thiết kế hình oval giống với thiết kế của phần ống xả. Khi ấn vào logo hình chữ B, phần cốp của xe sẽ được mở lên.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Bentley Continental GTC.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail6" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--6-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo6()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Bentley Muslanne.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Bentley Muslanne</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Sedan</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Bentley</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 20,000,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Phía đầu xe là biểu tượng logo chữ B quen thuộc với đôi cánh được tạo ra từ chất liệu không gỉ, có thể tụt xút nếu có một lực tác động vào. Đây được là điểm nhấn nổi bật nhất để khẳng định được vị trí “người dẫn đầu” của dòng xe này. Bên cạnh đó, cụm đèn pha Full – LED dạng ma trận cũng sẽ tôn thêm vẻ lộng lẫy của chiếc Mulsanne vào ban đêm. 
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Bentley Muslanne.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Phần thân xe được làm bằng thép nguyên khối, khả năng hấp thụ xung lực tốt đảm bảo an toàn cho người ngồi phía trong. Phần trụ B của xe được mạ crom dày khiến chiếc xe trở nên sang và đẳng cấp hơn.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Bentley Muslanne.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Gương chiếu hậu được điều chỉnh điện gập mở tùy ý, có khả năng tự sấy gương và tích hợp đèn báo rẽ. Bước sang thế hệ mới , cụm đèn hậu được thiết kế hình chữ B với 2 bóng chính thay vì 3 bóng so với những phiên bản cũ. Bên dưới phía sau đuôi xe là hình ống xả oval mạ kim loại quen thuộc.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Bentley Muslanne.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="category">
+            <!------------------------CATEGORY---------------------->
+            <section class="category">
+               <div class="container">
+                   <div class="row">
+                       <div class="category-left">
+                           <ul>
+                               <li class="category-left-li"><a href="category.html">Tất cả</a></li>
+                               <li class="category-left-li"><a href="categoryAudi.html">Audi</a></li>
+                               <li class="category-left-li"><a href="categoryBentley.html">Bentley</a></li>
+                               <li class="category-left-li"><a href="categoryBMW.html">BMW</a></li>
+                               <li class="category-left-li"><a href="categoryFord.html">Ford</a></li>
+                               <li class="category-left-li"><a href="categoryMazda.html">Mazda</a></li>
+                               <li class="category-left-li"><a href="categoryMercedes.html">Mercedes-Benz</a></li>
+                           </ul>
+                       </div>
+                       <div class="category-right">
+                           <div class="category-right-top-item">
+                               <p id="type">Bentley</p>
+                               <button><span>Bộ lọc</span><i class="fas fa-sort-down"></i></button>
+                               <select name="" id="">
+                                   <option value="">Sắp xếp</option>
+                                   <option value="">Giá cao đến thấp</option>
+                                   <option value="">Giá thấp đến cao</option>
+                               </select>
+                           </div>
+                           <div id="cars-content" class="category-right-content row">
+                                <!--Sản phẩm hiển thị ở đây-->
+                                <!--sp4-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Continental GT.webp" alt="">
+                                    <h1>Bentley Continental GT</h1>
+                                    <p class="product-price">21,500,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo4()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp5-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Bentley Continental GTC.png" alt="">
+                                    <h1>Bentley Continental GTC</h1>
+                                    <p class="product-price">11,000,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo5()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp6-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Bentley Muslanne.jpg" alt="">
+                                    <h1>Bentley Muslanne</h1>
+                                    <p class="product-price">20,000,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo6()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                </div>
+                           </div>
+                           <div class="category-right-bottom row">
+                               <div id="pagination" class="category-right-bottom-item">
+                                    <ul class="number-page" id="number-page">
+                                        <li><</li>
+                                        <li>1</li>
+                                        <li>></li>
+                                    </ul>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </section>        
+        </div>
+        <!------------------------FOOTER---------------------->
+        <div id="footer" class="footer">
+            <div class="footer-container container">
+                <div class="footer-box">
+                    <a href="index.html" class="logo"><img src="img/logo.jpg" alt=""></a>
+                    <div class="social">
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-facebook"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-twitter"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-instagram"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Page</b></h3>
+                    <a href="index.html">Trang chủ</a>
+                    <a href="#" onclick="chuaCapNhat()">Về chúng tôi</a>
+                    <a href="#" onclick="renderCategory()">Mẫu xe</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Chính sách</b></h3>
+                    <a href="#" onclick="chuaCapNhat()">Quyền riêng tư</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách hoàn trả</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách về Cookie</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Liên hệ</b></h3>
+                    <a href="#"><i class='bx bxs-home'><b>Địa chỉ đăng ký</b>: 123 đường A, Phường. B, Quận. C, Thành phố XYZ, Việt Nam</i></a>
+                    <a href="#"><i class='bx bxs-phone'><b>SĐT</b>: 0832963381 </i></a>
+                    <a href="#"><i class='bx bxs-envelope'><b>Email</b>: serviceN&K@gmail.com</i></a>
+                </div>
+            </div>
+            <div class="copy-right">
+                <p style="color: black;"> <b>© 2023 Công ty Ô tô N & K. Bản quyền thuộc về chúng tôi.</b></p>
+            </div>
+        </div>
+    </body>
+</html>

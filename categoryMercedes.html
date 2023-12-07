@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <title>XE HƠI</title> 
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
+        <script src="js/index.js" defer></script>
+        <script src="js/cart.js" defer></script>
+    </head>
+    <body>
+        <!------------------------HEADER---------------------->
+        <header id="myHeader">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.jpg" alt=""></a>
+            </div>
+
+            <div class="menu">
+                <li><a href="index.html"><b>TRANG CHỦ</b></a></li>
+                <li onclick="chuaCapNhat()"><b>VỀ CHÚNG TÔI</b></li>
+                <li><a href="category.html"><b>MẪU XE</b></a></li>
+            </div>
+
+            <div id="others" class="others">
+                <li><input id="search" placeholder="TÌM KIẾM" type="text" oninput="search()" > <i id="searchBtn" class="fas fa-search"></i></li>
+                <div>
+                    <li id="customerName1" onclick="renderLoginForm()"><img src="img/user.png" alt="" ></li>
+                    <li id="customerName2" style="display: none; font-weight: bold;">
+                        <p id="hello"></p>
+                        <ul class="dropDownCustomerName2">
+                            <a >Cài đặt</a>
+                            <a id="logout">Đăng xuất</a>
+                        </ul>
+                    </li>
+                </div>
+                <div class="icon-cart">
+                    <li><img src="img/shopping-cart.png" alt="" id="cart-icon"></li>
+                    <span>0</span>
+                </div>
+            </div>
+        </header>
+        <!------------------------CART---------------------->
+        <div id="showCart" class="showCart" style="display: none;">
+            <div id="cart-tab" class="cartTab" >
+                <h1>GIỎ HÀNG</h1>
+                <div class="listCart">
+                    <div class="item">
+
+                    </div>
+                </div>
+                <div class="btn">
+                    <button id="closeCart" class="close">ĐÓNG</button>
+
+                    <button class="checkOut">ĐẶT HÀNG</button>
+                </div>
+            </div>
+        </div>
+        <!------------------------LOGIN-FORM---------------------->
+        <div id = "login-form" style="display: none;">
+            <div class="container">
+                <input type="checkbox" id="check">
+                <div id="loginForm" class="login form">
+                  <div class="header">Login</div>
+                  <form action="#">
+                    <input id="loginUsername" type="text" placeholder="Enter your username">
+                    <input id="loginPassword" type="password" placeholder="Enter your password">
+                    <input type="button" class="button" value="Login" onclick="getLoginValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Don't have an account?
+                     <label for="check">Signup</label>
+                    </span>
+                  </div>
+                </div>
+                <div id="signUpForm" class="registration form">
+                  <div class="header">Signup</div>
+                  <form action="#">
+                    <input id="signUpUsername" type="text" placeholder="Nhập username" required>
+                    <input id="signUpEmail" type="text" placeholder="Nhập email" required>
+                    <input id="signUpPassword1" type="password" placeholder="Tạo mật khẩu" required>
+                    <input id="signUpPassword2" type="password" placeholder="Xác nhận mật khẩu" required>
+                    <input id="address" type="address" placeholder="Nhập đỉa chỉ" required>
+                    <input type="button" class="button" value="Signup" onclick="getSignUpValue()">
+                  </form>
+                  <div class="signup">
+                    <span class="signup">Already have an account?
+                     <label for="check">Login</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div id="productDetail15" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--15-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo15()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg EQS 500.png" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mercedes EQS 500</h2>
+                        <p id="productType" class="productType">Loại xe: Xe SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mercedes</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 5,000,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Nhìn từ trực diện, EQS SUV 500 dễ dàng thu hút mọi ánh nhìn trên đường với lưới tản nhiệt Panamerica, bên trong là cấu trúc dạng “trời sao” độc đáo.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Hông xe EQS SUV 500 có thiết kế mềm mại, tỷ lệ hài hoà, mang nét đẹp thanh lịch. Nhờ sử dụng vật liệu nhôm và thép không gỉ, khung xe có trọng lượng nhẹ hơn nhưng độ cứng lại tối ưu hơn giúp đảm bảo an toàn tối đa cho hành khách.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Nổi bật nhất ở phần đuôi xe là cụm đèn hậu kéo dài OLED cực sắc nét góp phần tạo nên tổng thể hiện đại, hơi hướng tương lai. Không sở hữu hệ thống ống xả thể thao như các mẫu xe sử dụng động cơ đốt trong nhưng EQS SUV 500 vẫn tự tin mang đến hiệu suất vận hành ấn tượng nhờ có hệ thống thoát khí ẩn và cánh lướt gió được tối ưu.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg EQS 500 (SUV).png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail16" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--16-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo16()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg 580-4Matic.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mercedes 580 4Matic</h2>
+                        <p id="productType" class="productType">Loại xe: Xe Điện</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mercedes</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 6,000,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            Mercedes-Benz EQS 580 4Matic sở hữu ngoại hình khác biệt với những mẫu xe mang logo ngôi sao ba cánh. Mui xe được thiết kế thấp, phần kính chắn gió kéo về phía trước. 
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg 580 4Matic.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Chiếc sedan điện hạng sang của thương hiệu ngôi sao ba cánh sở hữu những đường cong uyển chuyển ở hai bên hông xe. Đặc biệt, đường cong từ cột C đến phần cốp sau được thiết kế khá tinh tế.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg 580 4Matic.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Phía sau xe trang bị hệ thống đèn hậu với thiết kế ấn tượng. Dải đèn này được bố trí trải dài tinh tế từ trái sang phải, bên trong là bóng LED giúp gia tăng khả năng nhận diện từ phía sau. Cảm hứng thiết kế của đèn hậu đến từ các cuộn dây của bóng đèn sợi đốt.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg 580 4Matic.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetail17" class="productDetail" style="display: none;">
+            <!------------------------PRODUCT-DETAIL---------------------->
+            <!--17-->
+            <div id="info" class="info">
+                <div id="clsBtn">
+                    <button type="button" class="closeBtn" onclick="closeProductInfo17()">+</button>
+                </div>
+                <div class="top-info">
+                    <div class="left-content">
+                        <img id="productImg" class="productImg" src="img/mainImg Mercedes C300 AMG.jpg" alt="hình ảnh">
+                    </div>
+                    <div class="right-content">
+                        <h2 id="productName" class="productName">Mercedes C300 AMG</h2>
+                        <p id="productType" class="productType">Loại xe: Xe SUV</p>
+                        <p id="productBrand" class="productBrand">Hãng xe: Mercedes</p>
+                        <h4 id="productPrice" class="productPrice">Giá: 2,500,000,000</h4>
+                        <div class="productQuanity">
+                            <p>Số lượng: </p>
+                            <div id="buy-amount">
+                                <button class="minus-btn" onclick="handleMinus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </button>
+                                <input type="text" name="amount" id="amount" value="1">
+                                <button class="plus-btn" onclick="handlePlus()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <div class="bottom-info">
+                    <div class="front-design">
+                        <h2>Thiết kế phần đầu xe</h2>
+                        <p id="front-design">
+                            So với phiên bản trước đó thì đầu xe Mercedes Benz C300 thế hệ mới đã thay đổi khá nhiều để mang đến cảm giác tinh giản, thả hơn hơn. Mặt ca lăng có hình dáng phần trên thu nhỏ và phần dưới mở rộng dần. Bộ lưới tản nhiệt kim cương đặc trưng của dòng xe AMG vẫn là điểm cuốn hút chính, tuy nhiên đã được thiết kế lại với vẻ đẹp sắc sảo, huyền bí.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgFront" src="img/frontImg Mercedes C300 AMG.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="body-design">
+                        <h2>Thiết kế phần thân xe</h2>
+                        <p id="body-design">
+                            Khi nhìn từ bên hông, Mercedes C300 AMG 2023 có một thân hình thuôn dài hút mắt. Xe trông càng sang trọng hơn với trục đầu xe đến trụ A chiếm một khoảng lớn trong tổng chiều dài và cabin nằm lùi nhiều về phía sau. Gương chiếu hậu tích hợp đầy đủ các tính năng quan trọng cho xe như chỉnh điện, gập điện, chống chói tự động, nhớ vị trí và đèn báo rẽ.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgBody" src="img/bodyImg Mercedes C300 AMG.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="tail-design">
+                        <h2>Thiết kế phần đuôi xe</h2>
+                        <p id="tail-design">
+                            Cụm đèn hậu phía sau của Mercedes C300 AMG được lấy cảm hứng từ dòng xe S-Class, với thiết kế đèn LED dạng 3D tinh thể được chia làm các khối. Thiết kế này mang đến sự cuốn hút với góc cạnh đặc biệt. Bộ Body Kit AMG thể thao làm nổi bật cản sau của xe, những đường nét to bản giúp tối ưu hóa khí động học và tạo nên sự hầm hố.
+                        </p>
+                        <div class="img-box">
+                            <img id="imgTail" src="img/tailImg Mercedes C300 AMG.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="category">
+            <!------------------------CATEGORY---------------------->
+            <section class="category">
+               <div class="container">
+                   <div class="row">
+                       <div class="category-left">
+                           <ul>
+                               <li class="category-left-li"><a href="category.html">Tất cả</a></li>
+                               <li class="category-left-li"><a href="categoryAudi.html">Audi</a></li>
+                               <li class="category-left-li"><a href="categoryBentley.html">Bentley</a></li>
+                               <li class="category-left-li"><a href="categoryBMW.html">BMW</a></li>
+                               <li class="category-left-li"><a href="categoryFord.html">Ford</a></li>
+                               <li class="category-left-li"><a href="categoryMazda.html">Mazda</a></li>
+                               <li class="category-left-li"><a href="categoryMercedes.html">Mercedes-Benz</a></li>
+                           </ul>
+                       </div>
+                       <div class="category-right">
+                           <div class="category-right-top-item">
+                               <p id="type">Mazda</p>
+                               <button><span>Bộ lọc</span><i class="fas fa-sort-down"></i></button>
+                               <select name="" id="">
+                                   <option value="">Sắp xếp</option>
+                                   <option value="">Giá cao đến thấp</option>
+                                   <option value="">Giá thấp đến cao</option>
+                               </select>
+                           </div>
+                           <div id="cars-content" class="category-right-content row">
+                                <!--Sản phẩm hiển thị ở đây-->
+                                <!--sp15-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg EQS 500.png" alt="">
+                                    <h1>Mercedes EQS 500</h1>
+                                    <p class="product-price">5,000,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo15()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp16-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg 580-4Matic.jpg" alt="">
+                                    <h1>Mercedes 580 4Matic</h1>
+                                    <p class="product-price">6,000,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo16()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                </div>
+                                <!--sp17-->
+                                <div class="category-right-content-item">
+                                    <img src="img/mainImg Mercedes C300 AMG.jpg" alt="">
+                                    <h1>Mercedes C300 AMG</h1>
+                                    <p class="product-price">2,500,000,000<sup>đ</sup></p>
+                                        <button class="btnShowDetail" onclick="showProductInfo17()">Xem chi tiết xe</button> 
+                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                </div>
+                           </div>
+                           <div class="category-right-bottom row">
+                               <div id="pagination" class="category-right-bottom-item">
+                                    <ul class="number-page" id="number-page">
+                                        <li><</li>
+                                        <li>1</li>
+                                        <li>></li>
+                                    </ul>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </section>        
+        </div>
+        <!------------------------FOOTER---------------------->
+        <div id="footer" class="footer">
+            <div class="footer-container container">
+                <div class="footer-box">
+                    <a href="index.html" class="logo"><img src="img/logo.jpg" alt=""></a>
+                    <div class="social">
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-facebook"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-twitter"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-instagram"></i></a>
+                        <a href="" onclick="chuaCapNhat()"><i class="bx bxl-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Page</b></h3>
+                    <a href="index.html">Trang chủ</a>
+                    <a href="#" onclick="chuaCapNhat()">Về chúng tôi</a>
+                    <a href="#" onclick="renderCategory()">Mẫu xe</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Chính sách</b></h3>
+                    <a href="#" onclick="chuaCapNhat()">Quyền riêng tư</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách hoàn trả</a>
+                    <a href="#" onclick="chuaCapNhat()">Chính sách về Cookie</a>
+                </div>
+                <div class="footer-box">
+                    <h3><b>Liên hệ</b></h3>
+                    <a href="#"><i class='bx bxs-home'><b>Địa chỉ đăng ký</b>: 123 đường A, Phường. B, Quận. C, Thành phố XYZ, Việt Nam</i></a>
+                    <a href="#"><i class='bx bxs-phone'><b>SĐT</b>: 0832963381 </i></a>
+                    <a href="#"><i class='bx bxs-envelope'><b>Email</b>: serviceN&K@gmail.com</i></a>
+                </div>
+            </div>
+            <div class="copy-right">
+                <p style="color: black;"> <b>© 2023 Công ty Ô tô N & K. Bản quyền thuộc về chúng tôi.</b></p>
+            </div>
+        </div>
+    </body>
+</html>
