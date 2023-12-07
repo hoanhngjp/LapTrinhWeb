@@ -285,3 +285,6 @@ function showProductInfo17(){
     render(0);
     document.getElementById('productDetail17').style.display = 'flex';
 }
+
+function vuive(){
+}
