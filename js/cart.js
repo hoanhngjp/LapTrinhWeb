@@ -119,3 +119,8 @@ const changeQuanity = (product_id, type) => {
 function themVaoGioHang(){
     alert("Thêm vào giỏ hàng thành công !!!");
 }
+
+function datHang(){
+    alert("ĐẶT HÀNG THÀNH CÔNG !!!");
+    document.getElementById('showCart').style.display = 'none';
+}

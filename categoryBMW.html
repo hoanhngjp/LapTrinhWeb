@@ -46,13 +46,60 @@
                 <h1>GIỎ HÀNG</h1>
                 <div class="listCart">
                     <div class="item">
+                        <div class="img">
+                            <img src="img/mainImg RS e-tron GT.png" alt="">
+                        </div>
+                        <div class="name">
+                            Audi RS e-tron GT
+                        </div>
+                        <div class="totalPrice">
+                            5,900,000,000
+                        </div>
+                        <div class="quanity">
+                            <span id="minus" class="minus"><</span>
+                            <span><p>2</p></span>
+                            <span id="plus" class="plus">></span>
+                        </div>
+                    </div>
 
+                    <div class="item">
+                        <div class="img">
+                            <img src="img/mainImg Continental GT.webp" alt="">
+                        </div>
+                        <div class="name">
+                            Bentley Continental GT
+                        </div>
+                        <div class="totalPrice">
+                            11,000,000,000
+                        </div>
+                        <div class="quanity">
+                            <span id="minus" class="minus"><</span>
+                            <span><p>3</p></span>
+                            <span id="plus" class="plus">></span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="img">
+                            <img src="img/mainImg 580-4Matic.jpg" alt="">
+                        </div>
+                        <div class="name">
+                            Mercedes 580 4Matic
+                        </div>
+                        <div class="totalPrice">
+                            6,000,000,000
+                        </div>
+                        <div class="quanity">
+                            <span id="minus" class="minus"><</span>
+                            <span><p>1</p></span>
+                            <span id="plus" class="plus">></span>
+                        </div>
                     </div>
                 </div>
                 <div class="btn">
                     <button id="closeCart" class="close">ĐÓNG</button>
 
-                    <button class="checkOut">ĐẶT HÀNG</button>
+                    <button class="checkOut" onclick="datHang()">ĐẶT HÀNG</button>
                 </div>
             </div>
         </div>
@@ -180,7 +227,7 @@
                                 </button>
                             </div>
                         </div>
-                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
                     </div>
                 </div>
                 <div class="bottom-info">
@@ -245,7 +292,7 @@
                                 </button>
                             </div>
                         </div>
-                        <button id="productAddToCart" class="productAddToCart">Thêm vào giỏ hàng</button>
+                        <button id="productAddToCart" class="productAddToCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button>
                     </div>
                 </div>
                 <div class="bottom-info">
@@ -314,7 +361,7 @@
                                     <h1>BMW i7 xDrive60</h1>
                                     <p class="product-price">9,200,000,000<sup>đ</sup></p>
                                         <button class="btnShowDetail" onclick="showProductInfo7()">Xem chi tiết xe</button> 
-                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
                                 </div>
                                 <!--sp8-->
                                 <div class="category-right-content-item">
@@ -322,7 +369,7 @@
                                     <h1>BMW Z4 Roadster</h1>
                                     <p class="product-price">3,500,000,000<sup>đ</sup></p>
                                         <button class="btnShowDetail" onclick="showProductInfo8()">Xem chi tiết xe</button> 
-                                        <button class="btnAddCart" onclick="">Thêm vào giỏ hàng</button> 
+                                        <button class="btnAddCart" onclick="themVaoGioHang()">Thêm vào giỏ hàng</button> 
                                 </div>
                            </div>
                            <div class="category-right-bottom row">
