@@ -115,12 +115,15 @@ const changeQuanity = (product_id, type) => {
     addCartToHTML();
 }
 
+var quantity = 6;
 
 function themVaoGioHang(){
     alert("Thêm vào giỏ hàng thành công !!!");
+    iconCartSpan.innerText = quantity+=1;
 }
 
 function datHang(){
     alert("ĐẶT HÀNG THÀNH CÔNG !!!");
     document.getElementById('showCart').style.display = 'none';
+    iconCartSpan.innerText = `0`;
 }
