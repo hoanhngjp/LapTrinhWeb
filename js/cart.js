@@ -111,8 +111,8 @@ const changeQuanity = (product_id, type) => {
                 break;
         }   
     }
-    addCartToLocalStogare();
-    addCartToHTML();
+    //addCartToLocalStogare();
+    //addCartToHTML();
 }
 
 var quantity = 6;
