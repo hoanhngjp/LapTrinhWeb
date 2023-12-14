@@ -27,7 +27,6 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <link rel="stylesheet" href="admin/process.css">
   <link rel="stylesheet" href="admin/style.css">
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -241,12 +240,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Bảng chính</h1>
+            <h1 class="m-0">Chi tiết đơn hàng - GHU002</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin.html">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Bảng chính</li>
+              <li class="breadcrumb-item active">...</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -255,65 +254,39 @@
     <!-- /.content-header -->
 
   
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>7</h3>
-              <p>Đơn hàng mới</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bookmark"></i>
-            </div>
-            <a href="donhang1.html" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-success">
-            <div class="inner">
-              <h3>69.96<sup style="font-size: 20px">%</sup></h3>
-              <p>Thu nhập</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="thongke.html" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-warning">
-            <div class="inner">
-              <h3>4</h3>
-              <p>Người dùng</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="user3.html" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-gray">
-            <div class="inner">
-              <h3>...</h3>
-              <p>Sản phẩm mới</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-android-car"></i>
-            </div>
-            <a href="product1.html" class="small-box-footer">Cập nhật <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
+        
+   <!-- Đơn Hàng -->
+   <div class="donhang">
+    <table class="table-header">
+        <tr>
+            <!-- Theo độ rộng của table content -->
+            <th title="Sắp xếp" style="width: 5%" onclick="sortDonHangTable('madon')">Mã đơn <i class="fa fa-sort"></i></th>
+            <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('khach')">Khách hàng <i class="fa fa-sort"></i></th>
+            <th title="Sắp xếp" style="width: 15%" onclick="sortDonHangTable('sanpham')">Sản phẩm <i class="fa fa-sort"></i></th>
+            <th title="Sắp xếp" style="width: 7%" onclick="sortDonHangTable('sdt')">Số điện thoại <i class="fa fa-sort"></i></th>
+            <th title="Sắp xếp" style="width: 15%" onclick="sortDonHangTable('diachi')">Địa chỉ <i class="fa fa-sort"></i></th>
+            <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('donvi')">Đơn vị vẫn chuyển <i class="fa fa-sort"></i></th>
+            <th title="Sắp xếp" style="width: 15%" onclick="sortDonHangTable('tongtien')">Tổng tiền <i class="fa fa-sort"></i></th>
+            <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('ngaygio')">Ngày giờ <i class="fa fa-sort"></i></th>
+            <th title="Sắp xếp" style="width: 13%" onclick="sortDonHangTable('trangthai')">Trạng thái <i class="fa fa-sort"></i></th>
+        </tr>
+        <tr>
+            <th title="Sắp xếp" style="width: 5%" >GHU002 </th>
+            <th title="Sắp xếp" style="width: 10%" >Trần Thị Hà </th>
+            <th title="Sắp xếp" style="width: 15%" >Ford Focus </th>
+            <th title="Sắp xếp" style="width: 7%" >0778630019 </th>
+            <th title="Sắp xếp" style="width: 15%" >70 Lạc Long Quân P.10 Q.11</th>
+            <th title="Sắp xếp" style="width: 10%" >Flash-S</th>
+            <th title="Sắp xếp" style="width: 15%" >800.000.000 </th>
+            <th title="Sắp xếp" style="width: 10%" >15/12/2022</th>
+            <th title="Sắp xếp" style="width: 13%" >Chưa xử lý</th>
+        </tr>
+    </table>
+   </div>
+
+
+
+
 
 
   <!-- Control Sidebar -->

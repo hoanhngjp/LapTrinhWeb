@@ -275,20 +275,47 @@
         <th title="Sắp xếp" style="width: 20%" onclick="sortProductsTable('gia')">Giá bán<i class="fa fa-sort"></i></th>
     </tr>
     <tr>
-      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('stt')">1</th>
-      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('masp')">Mazda001</th>
-      <th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">Mazda2 2023</th>
-      <th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">null <i class="fa fa-sort"></i></th>
-      <th title="Sắp xếp" style="width: 20%" onclick="sortProductsTable('gia')">500.000.000</th>
-      </tr>
-      <tr>
-      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('stt')">... <i class="fa fa-sort"></i></th>
-      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('masp')">... </th>
-      <th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">... </th>
-      <th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">... <i class="fa fa-sort"></i></th>
-      <th title="Sắp xếp" style="width: 20%" onclick="sortProductsTable('gia')">...</th>
-      </tr>
+      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('stt')">1 </th>
+      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('masp')">Audi001</th>
+      <th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">RS e-tron GT</th>
+      <th class="anh">
+        <img src="dist/img/RS e-tron GT.jpg" alt="" width="250px" height="150px">
+      </th>
+      <th title="Sắp xếp" style="width: 20%" onclick="sortProductsTable('gia')">5.900.000.000</th>
+    </tr>
+    <tr>
+      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('stt')">2 </th>
+      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('masp')">Audi02</th>
+      <th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">RS e-tron Quattro</th>
+      <th class="anh">
+        <img src="dist/img/RS e-tron Quattro.jpg" alt="" width="250px" height="150px">
+      </th>
+      <th title="Sắp xếp" style="width: 20%" onclick="sortProductsTable('gia')">5.200.000.000</th>
+    </tr><tr>
+      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('stt')">3 </th>
+      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('masp')">Ford01</th>
+      <th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">Ford Everest 2023</th>
+      <th class="anh">
+        <img src="dist/img/Ford Everest 2023.jpg" alt="" width="250px" height="150px">
+      </th>
+      <th title="Sắp xếp" style="width: 20%" onclick="sortProductsTable('gia')">1.500.000.000</th>
+    </tr><tr>
+      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('stt')">4 </th>
+      <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('masp')">Ford02</th>
+      <th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">Ford Territory 2023</th>
+      <th class="anh">
+        <img src="dist/img/Ford Territory.jpg" alt="" width="250px" height="150px">
+      </th>
+      <th title="Sắp xếp" style="width: 20%" onclick="sortProductsTable('gia')">1.000.000.000</th>
+    </tr>
   </table>
+
+  <div class="sanpham">
+    <div class="table-footer">
+      Mã sản phẩm: <input type="text" placeholder="..." onkeyup="timKiemSanPham(this)">
+  </div>
+</div>
+
 
 
  
@@ -310,7 +337,7 @@
                             <option value="Ford">Ford</option>
                         </select>
                     </td>
-                </tr>
+                  </tr>
                 <tr>
                   <td>Tên sản phẩm:</td>
                   <td><input id="name" type="text" onchange=""></td>
@@ -328,7 +355,8 @@
                 </tr>
               </table>
           </td>
-          <td>
+          
+        <td>
               <ul class="homeproduct group flexContain" id="live"></ul>
           </td>
       </tr>
@@ -337,40 +365,10 @@
               <button onclick="xoaSanPham()"><i class="fa fa-wrench"></i>Sửa </button>
           </td>
       </tr>
-      <tr>
-          <td colspan="2">
-              <h3>Kết quả</h3>
-          </td>
-      </tr>
-  </table>
-
-  <table class="table-header">
-    <tr>
-        <!-- Theo độ rộng của table content -->
-        <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('stt')">STT <i class="fa fa-sort"></i></th>
-        <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('masp')">Mã <i class="fa fa-sort"></i></th>
-        <th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">Tên <i class="fa fa-sort"></i></th>
-        <th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">Ảnh <i class="fa fa-sort"></i></th>
-        <th title="Sắp xếp" style="width: 20%" onclick="sortProductsTable('gia')">Giá bán<i class="fa fa-sort"></i></th>
-    </tr>
-<tr>
-<th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('stt')">1</th>
-<th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('masp')">Mazda001</th>
-<th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">Mazda2 2023</th>
-<th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">null <i class="fa fa-sort"></i></th>
-<th title="Sắp xếp" style="width: 20%" onclick="sortProductsTable('gia')">690.000.000</th>
-</tr>
-<tr>
-<th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('stt')">... <i class="fa fa-sort"></i></th>
-<th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('masp')">... </th>
-<th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">... </th>
-<th title="Sắp xếp" style="width: 30%" onclick="sortProductsTable('ten')">... <i class="fa fa-sort"></i></th>
-<th title="Sắp xếp" style="width: 20%" onclick="sortProductsTable('gia')">...</th>
-</tr>
   </table>
 
 
-       
+    
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,500&display=swap');
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+.tieuDeBang{
+    text-align: left;
+    box-sizing: border-box;
+    padding-left: 50px;
+    padding-bottom: 20px;
+    width: 100%;
+    border-bottom: 5px solid #00a67d;
+}
+
+.thanhToan{
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+/*------------------------Bảng thanh toán------------------------*/
+.tieuDeChiTiet{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.thanhToan .bangThanhToan{
+    overflow: scroll;
+    height: 600px;
+    width: 1000px;
+    background-color: white;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 50px 20px 20px;
+    position: relative;
+    animation: topdown 0.5s;
+    z-index: 20;
+    border-radius: 20px;
+}
+
+.thanhToan .bangThanhToan .closeBtn{
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    font-size: 35pt;
+    transform: rotate(45deg);
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.thanhToan .bangThanhToan .closeBtn:hover{
+    color: #c9cbce;
+}
+
+.chiTietDonHang table{
+    border-collapse: collapse;
+}
+
+.chiTietDonHang img{
+    max-width: 150px;
+}
+
+.chiTietDonHang th{
+    background-color: #04AA6D;
+    color: white;
+}
+
+.chiTietDonHang table th, td{
+    width: 200px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.chiTietDonHang tfoot{
+    background-color: #04AA6D;
+}
+
+.chiTiet .btns{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 400px;
+}
+
+.chiTiet button{
+    width: 260px;
+    height: 60px;
+	cursor: pointer;
+	font-size: 16pt;
+	padding: 10px 30px;
+	background-color: #088178;
+	color: #fff;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+.chiTiet button:hover{
+    background-color: #033531;
+	color: #fff;
+	border: 2px solid #fff;
+}
+
+/*------------------------Thông tin đặt hàng------------------------*/
+.tieuDeThongTinDatHang{
+    padding-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.datHang{
+    align-items: center;
+    width: 100%;
+}
+
+.thongTinDatHang form{
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.datHang .chooseGender{
+    display: flex;
+    align-items: center; 
+    margin-bottom: 10px; 
+    gap: 10px;
+}
+
+.datHang .thongTinDatHang .formInput{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px; 
+    justify-content: center;
+}
+
+.datHang .thongTinDatHang .formInput label{
+    padding: 10px 0px 10px 30px;
+}
+
+.datHang .thongTinDatHang .formInput input{
+    height: 30px;
+    background-color: #ececec;
+    border: none;
+    border-radius: 20px;
+}
+
+.datHang .thongTinDatHang .formInput input[type="text"]{
+    padding-left: 20px; /* Tạo khoảng trống bên trái để dấu nháy không che phủ văn bản */
+}
+
+.datHang .thongTinDatHang .formInput .diaChi{
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+}
+
+input[type="text"]:focus{
+    padding-left: 5px; /* Khi input có focus, giảm khoảng trống để dấu nháy di chuyển về phía trái */
+}
+
+.datHang .btns{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 500px;
+}
+
+.datHang button{
+	cursor: pointer;
+	font-size: 16pt;
+	padding: 10px 30px;
+	background-color: #088178;
+	color: #fff;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+.datHang button:hover{
+    background-color: #033531;
+	color: #fff;
+	border: 2px solid #fff;
+}
+/*------------------------Thông tin đặt hàng------------------------*/
+.xacNhanDatHangContainer{
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+}
+
+.xacNhanDatHang{
+    height: 150px;
+    width: 450px;
+    background-color: white;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0px 20px 20px;
+    position: relative;
+    animation: topdown 0.5s;
+    z-index: 20;
+    border-radius: 40px;
+}
+
+.xacNhanDatHang h2{
+    padding-top: 10px;
+}
+
+.xacNhanDatHang .btns{
+    padding-top: 10px;
+    display: flex;
+    gap: 30px;
+}
+
+.xacNhanDatHang button{
+    cursor: pointer;
+	font-size: 16pt;
+	padding: 10px 30px;
+	background-color: #088178;
+	color: #fff;
+    border: 2px solid #fff;
+    border-radius: 30px;
+}
+
+.xacNhanDatHang button:hover{
+    background-color: #033531;
+	color: #fff;
+	border: 2px solid #fff;
+}
+
+/*------------------------Custom Scroll Bar------------------------*/
+html::-webkit-scrollbar{
+    width: 0.5rem;
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+    border-radius: 5rem;
+    background: black;
+}

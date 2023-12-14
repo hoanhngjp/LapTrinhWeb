@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" contet="width=device-width, intitial-scale=1.0">
+        <link rel="stylesheet" href="css/thanhToan.css">
+        <script src="js/thanhToan.js" defer></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="xacNhanDatHangContainer" class="xacNhanDatHangContainer" style="display: none;">
+            <div class="xacNhanDatHang">
+                <div class="">
+                    <h2>Xác nhận đặt hàng?</h2>
+                </div>
+                <div class="btns">
+                    <button onclick="quayLai3()">Kiểm tra lại</button>
+                    <button onclick="datHang2()">Xác nhận</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="thanhToan" class="thanhToan">
+            <div class="bangThanhToan">
+                <div id="clsThanhToan">
+                    <button type="button" class="closeBtn" onclick="closeThanhToan()">+</button>
+                </div>
+                <div class="tieuDeBang">
+                    <h1>Thanh toán</h1>
+                </div>
+                <div id="chiTiet" class="chiTiet">
+                    <div class="tieuDeChiTiet">
+                        <h2>Chi tiết đơn hàng</h2>
+                    </div>
+    
+                    <div class="chiTietDonHang">
+                        <table>
+                            <thead>
+                                <th>STT</th>
+                                <th>Hình ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá tiền</th>
+                                <th>Số lượng</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><img src="OIP.jpg" alt=""></td>
+                                    <td>Audi RS e-tron GT</td>
+                                    <td>5,900,000,000<sup>đ</sup></td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><img src="OIP.jpg" alt=""></td>
+                                    <td>Bentley Continental GT</td>
+                                    <td>11,000,000,000<sup>đ</sup></td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><img src="OIP.jpg" alt=""></td>
+                                    <td>Mercedes 580 4Matic</td>
+                                    <td>6,000,000,000<sup>đ</sup></td>
+                                    <td>1</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <td colspan="3"><b>Tổng tiền: </b></td>
+                                <td colspan="2"><b>50.800.000.000</b><sup>đ</sup></td>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <div class="btns">
+                        <button onclick="quayLai1()">Quay lại</button>
+                        <button onclick="kiemTraThongTinDatHang()">Kiểm tra thông tin</button>
+                    </div>
+                </div>
+
+                <div id="datHang" class="datHang" style="display: none;">
+                    <div class="tieuDeThongTinDatHang">
+                        <h2>Thông tin đặt hàng</h2>
+                    </div>
+    
+                    <div class="thongTinDatHang">
+                        <form action="">
+                            <div class="chooseGender">
+                                <input type="radio" value="Nam" name="genders"><label for="">Nam</label>
+                                <input type="radio" value="Nữ" name="genders"><label for="">Nữ</label>
+                            </div>
+                            <div class="formInput">
+                                    <label for=""><b>Họ và tên:</b></label>
+                                    <input type="text">
+                                    <label for=""><b>Email:</b></label>
+                                    <input type="text">
+                                    <label for=""><b>Số điện thoại:</b></label>
+                                    <input type="text">
+                                    <div class="diaChi">
+                                        <label for=""><b>Địa chỉ:</b></label>
+                                        <input type="radio" id="old" value="cũ" name="address" onclick="chooseAddress()"><p>Địa chỉ mặc định</p>
+                                        <input type="radio" id="new" value="mới" name="address" onclick="chooseAddress()"><p>Địa chỉ khác</p>
+                                    </div>
+                                    <input id="address" type="text" style="display: none;">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="btns">
+                        <button onclick="quayLai2()">Quay lại</button>
+                        <button onclick="datHang1()">Đặt hàng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

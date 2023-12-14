@@ -144,7 +144,7 @@ li{
     display: flex;
     flex-direction: column;
     position: absolute;
-    width: 150px;
+    max-width: 200px;
     border: 1px solid #ccc;
     padding: 10px 10px 10px 10px;
     top: 40px;
@@ -152,6 +152,11 @@ li{
     transition: 0.3s;
     z-index: 1;
     background: rgba(225, 225, 225, 1);
+}
+
+.dropDownCustomerName2 a:hover{
+    border-bottom: 2px solid #000;
+    color: #909090;
 }
 
 .others li:hover .dropDownCustomerName2{
@@ -844,6 +849,7 @@ li{
 }
 /*------------------------FOOTER------------------------*/
 .footer{
+    position: relative;
     padding-top: 20px;
     background: #e1e1e1;
     color: #f6f6f6;

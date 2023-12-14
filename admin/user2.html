@@ -259,7 +259,7 @@
           <select name="kieuTimKhachHang">
               <option value="ten">Tìm theo ID</option>
               <option value="email">Tìm theo Email</option>
-              <option value="taikhoan">Tìm theo tài khoản</option>
+              <option value="taikhoan">Tìm theo Tài khoản</option>
           </select>
           <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemNguoiDung(this)">
           <button onclick="locDonHangTheoKhoangNgay()"><i class="fa fa-search"></i> Tìm</button>
@@ -284,7 +284,37 @@
             <th title="Sắp xếp" style="width: 20%" >lamnguyen1206</th>
             <th title="Sắp xếp" style="width: 10%" >123@123 </th>
         </tr>
+        <tr>
+          <th title="Sắp xếp" style="width: 5%" >2 </th>
+          <th title="Sắp xếp" style="width: 15%" >FGU123</th>
+          <th title="Sắp xếp" style="width: 30%" >Ngô Tường Vân </th>
+          <th title="Sắp xếp" style="width: 20%" >tuongvann103@gmail.com</th>
+          <th title="Sắp xếp" style="width: 10%" >vanngo0405</th>
+          <th title="Sắp xếp" style="width: 10%" >vanmeow0405</th>
+        </tr>
+        <tr>
+          <th title="Sắp xếp" style="width: 5%" >2 </th>
+          <th title="Sắp xếp" style="width: 15%" >SJK003</th>
+          <th title="Sắp xếp" style="width: 30%" >Nguyễn Hữu Sang </th>
+          <th title="Sắp xếp" style="width: 20%" >sangnguyen1112@gmail.com</th>
+          <th title="Sắp xếp" style="width: 10%" >sangnguyen1112</th>
+          <th title="Sắp xếp" style="width: 10%" >sangdeptrai123</th>
+        </tr>
+        <tr>
+          <th title="Sắp xếp" style="width: 5%" >2 </th>
+          <th title="Sắp xếp" style="width: 15%" >UJI231</th>
+          <th title="Sắp xếp" style="width: 30%" >Trần Văn Linh </th>
+          <th title="Sắp xếp" style="width: 20%" >linhtran0101@gmail.com</th>
+          <th title="Sắp xếp" style="width: 10%" >linhtran0101</th>
+          <th title="Sắp xếp" style="width: 10%" >qwert12345</th>
+        </tr>
       </table>
+
+      <div class="khachhang">
+        <div class="table-footer">
+          ID: <input type="text" placeholder="..." onkeyup="timKiemNguoiDung(this)">
+      </div>
+  </div>
 
       
   <!-- Main content -->
@@ -316,34 +346,8 @@
                         <button onclick="xoaSanPham()"><i class="fa fa-wrench"></i>Sửa </button>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="2">
-                        <h3>Kết quả</h3>
-                    </td>
-                </tr>
             </table>
 
-            <table class="table-header">
-                <tr>
-                    <!-- Theo độ rộng của table content -->
-                    <th title="Sắp xếp" style="width: 5%" onclick="sortKhachHangTable('stt')">STT <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 15%" onclick="sortKhachHangTable('hoten')">ID <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 15%" onclick="sortKhachHangTable('hoten')">Họ tên <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 20%" onclick="sortKhachHangTable('email')">Email <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 20%" onclick="sortKhachHangTable('taikhoan')">Tài khoản <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 10%" onclick="sortKhachHangTable('matkhau')">Mật khẩu <i class="fa fa-sort"></i></th>
-                </tr>
-                <tr>
-                  <th title="Sắp xếp" style="width: 5%" >1 </th>
-                  <th title="Sắp xếp" style="width: 15%" >ABC022</th>
-                  <th title="Sắp xếp" style="width: 15%" >Nguyễn Minh Lâm </th>
-                  <th title="Sắp xếp" style="width: 20%" >minhlamnguyen1206@gmail.com</th>
-                  <th title="Sắp xếp" style="width: 20%" >lamnguyen1206</th>
-                  <th title="Sắp xếp" style="width: 10%" >lam1206@.</th>
-              </tr>
-            </table>
-          
-        
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

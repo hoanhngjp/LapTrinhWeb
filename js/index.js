@@ -75,6 +75,7 @@ function getLoginValue(){
         document.getElementById("myHeader").style.display = 'flex';
         document.getElementById('trangchu').style.display = 'block';
         document.getElementById('footer').style.display = 'block';
+        document.getElementById('icon-cart').style.display = 'block';
 }
 //Hiển thị chưa cập nhật
 function chuaCapNhat(){
@@ -284,7 +285,4 @@ function showProductInfo16(){
 function showProductInfo17(){
     render(0);
     document.getElementById('productDetail17').style.display = 'flex';
-}
-
-function vuive(){
 }

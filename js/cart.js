@@ -123,7 +123,6 @@ function themVaoGioHang(){
 }
 
 function datHang(){
-    alert("ĐẶT HÀNG THÀNH CÔNG !!!");
     document.getElementById('showCart').style.display = 'none';
-    iconCartSpan.innerText = `0`;
+    document.getElementById('thanhToanContainer').style.display = 'flex';
 }

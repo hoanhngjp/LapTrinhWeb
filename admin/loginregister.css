@@ -53,6 +53,11 @@
    border-radius: 6px;
    outline: none;
  }
+
+ .form #in{
+  width: 90%;
+ }
+
  .form input:focus{
    box-shadow: 0 1px 0 rgba(0,0,0,0.2);
  }

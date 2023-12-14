@@ -1,0 +1,105 @@
+.row{
+    display: flex;
+    margin: auto;
+}
+
+.account-detail{
+    padding: 100px 0 0;
+    border-bottom: 2px solid #000;
+}
+
+.account-detail-left{
+    display: flex;
+    border-right: 1px solid black;
+    align-items: center;
+    padding-left: 30px;
+    width: 15%;
+}
+
+.account-detail-left ul li{
+    padding : 12px 0;
+}
+
+.account-detail-left ul li a:hover{
+    color: #04AA6D;
+    box-shadow: 0 1px #04AA6D;
+
+}
+
+.account-detail-right{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.tieuDeLichSu{
+    padding-top: 20px;
+    text-align: left;
+    width: 100%;
+    padding-left: 50px;
+    border-bottom: 5px solid #00a67d;
+}
+
+.lichSu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lichSu .tieuDe{
+    padding-top: 10px;
+}
+
+.chiTietDonHang table{
+    border-collapse: collapse;
+}
+
+.chiTietDonHang img{
+    max-width: 150px;
+}
+
+.chiTietDonHang th{
+    background-color: #04AA6D;
+    color: white;
+}
+
+.chiTietDonHang table th, td{
+    width: 200px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.chiTietDonHang tfoot{
+    background-color: #04AA6D;
+}
+
+.chiTiet .btns{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 400px;
+}
+
+.chiTiet button{
+    width: 260px;
+    height: 60px;
+	cursor: pointer;
+	font-size: 16pt;
+	padding: 10px 30px;
+	background-color: #088178;
+	color: #fff;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+.chiTiet button:hover{
+    background-color: #033531;
+	color: #fff;
+	border: 2px solid #fff;
+}
