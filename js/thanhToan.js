@@ -1,9 +1,9 @@
 function closeThanhToan(){
-    document.getElementById('thanhToan').style.display = 'none';
+    document.getElementById('thanhToanContainer').style.display = 'none';
 }
 
 function quayLai1(){
-    document.getElementById('thanhToan').style.display = 'none';
+    document.getElementById('thanhToanContainer').style.display = 'none';
 }
 
 function kiemTraThongTinDatHang(){
@@ -24,11 +24,6 @@ function quayLai2(){
     });
 }
 
-function datHang(){
-    document.getElementById('showCart').style.display = 'none';
-    document.getElementById('thanhToanContainer').style.display = 'flex';
-}
-
 function datHang1(){
     document.getElementById('xacNhanDatHangContainer').style.display = 'flex';
 }
@@ -39,7 +34,7 @@ function quayLai3(){
 
 function datHang2(){
     document.getElementById('xacNhanDatHangContainer').style.display = 'none';
-    document.getElementById('thanhToan').style.display = 'none';
+    document.getElementById('thanhToanContainer').style.display = 'none';
     alert("Cảm ơn bạn đã đặt hàng !!!");
     let iconCartSpan = document.querySelector('.icon-cart span');
     let listCartHTML = document.querySelector('.listCart');
