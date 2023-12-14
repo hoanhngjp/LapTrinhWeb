@@ -47,11 +47,13 @@ function chooseAddress(){
     address = "439 An Dương Vương, Phường 5, Quận 5, Thành phố Hồ Chí Minh"
     if (document.getElementById('old').checked){
         addressInput.value = address;
+        addressInput.type = 'button';
         addressInput.style.display = 'flex';
     }
     if (document.getElementById('new').checked){
         addressInput.style.display = 'flex';
         addressInput.value = "";
+        addressInput.type = 'text';
         addressInput.placeholder = "Nhập địa chỉ mới";
     }
 }
